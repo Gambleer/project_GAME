@@ -11,7 +11,8 @@ namespace THE_GAME
     {
         public static void dialog(string postac, int kolor, string tekst)
         {
-            //0 - narrator, 1 - gracz, 2 - postaci trzecie, 3 - special
+            ///0 - narrator, 1 - gracz, 2 - postaci trzecie, 3 - special
+           
             if (kolor == 0) Console.ForegroundColor = ConsoleColor.Yellow;
             else if (kolor == 1) Console.ForegroundColor = ConsoleColor.Green;
             else if (kolor == 2) Console.ForegroundColor = ConsoleColor.DarkGreen;
