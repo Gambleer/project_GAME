@@ -294,7 +294,7 @@ namespace THE_GAME
 
             System.Threading.Thread.Sleep(2000);
 
-            say.dialog("n", 0, "<You enter the temple. Światło sklepienia pada Ci na twarz.\nCzerwone słońce zachodzi. Nadchodzi noc.>");
+            say.dialog("n", 0, "<Wchodzisz do świątyni. Światło sklepienia pada Ci na twarz.\nCzerwone słońce zachodzi. Nadchodzi noc.>");
 
             say.dialog("Starzec", 2, "W końcu jesteś! Czekaliśmy na Ciebie, wybrańcze!");
 
