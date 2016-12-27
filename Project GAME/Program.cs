@@ -254,11 +254,11 @@ namespace THE_GAME
 
             say.dialog("n", 0, "Pod osłoną nocy wchodzisz do środka budynku i rozglądasz się dookoła.");
 
-            say.dialog("???", 2, "Finally! Ileż można czekać.");
+            say.dialog("???", 2, "W końcu! Ileż można czekać.");
 
             say.dialog("n", 0, "Spoglądasz na uchylone drzwi na prawo od ciebie.");
 
-            say.dialog("???", 2, "Do You Have Cash?");
+            say.dialog("???", 2, "Masz kasę?");
 
             say.dialog("n", 0, "Rzucasz rulon pełen banknotów w stronę drzwi.");
 
@@ -279,7 +279,7 @@ namespace THE_GAME
             say.dialog("Don", 2, "3 to cele o największych zabezpieczeniach. Kojarzysz\nkilku miejscowych polityków co są zamieszani w kontakty\nkilku miejscowych polityków co są zamieszani w kontakty\nz lokalnym Boss'em podziemia. Cóż nie zostaniesz raczej\nwpisany na liste jego ulubionych osób, jeżeli wybierzesz\ntę listę. Chyba, że lubisz pływać z rybkami w betnowych\nbucikach. Poza tym, że są to najcięższe sejfy to dodatkowo\nkręci się tam stała ochrona, więc nie będziesz mieć czasu\nna zwiedzanie.");
             Console.Clear();
 
-            say.dialog("Don", 2, "A więc ... What's your choice?");
+            say.dialog("Don", 2, "A więc ... Co wybierasz?");
 
             Console.ReadKey(true);
         }
