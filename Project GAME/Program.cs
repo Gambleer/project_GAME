@@ -52,7 +52,7 @@ namespace THE_GAME
 
         //TODO: Funkcja będąca połączeniem wyborp i wybork
 
-        public static void wybor(int lwybor)
+        public static void wybor2(int )
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
