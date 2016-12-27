@@ -254,11 +254,11 @@ namespace THE_GAME
 
             say.dialog("n", 0, "Pod osłoną nocy wchodzisz do środka budynku i rozglądasz się dookoła.");
 
-            say.dialog("???", 2, "W końcu! Ileż można czekać.");
+            say.dialog("???", 2, "Finally! Ileż można czekać.");
 
             say.dialog("n", 0, "Spoglądasz na uchylone drzwi na prawo od ciebie.");
 
-            say.dialog("???", 2, "Masz kasę?");
+            say.dialog("???", 2, "Do You Have Cash?");
 
             say.dialog("n", 0, "Rzucasz rulon pełen banknotów w stronę drzwi.");
 
