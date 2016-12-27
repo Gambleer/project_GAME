@@ -7,11 +7,32 @@ using System.Media;
 namespace THE_GAME
 {
 
+    public class minigame
+    {
+        //TODO: minigame HEIST - prowadzący - Maciek
+        public static void Heist()
+        {
+
+        }
+
+        //TODO: minigame RUNNING - prowadzący - ImQ
+        public static void Running()
+        {
+
+        }
+
+        //TODO: minigame TEXTS - prowadzący - Gambler
+        public static void Texts()
+        {
+
+        }
+    }
+
     public class say
     {
         public static void dialog(string postac, int kolor, string tekst)
         {
-            ///0 - narrator, 1 - gracz, 2 - postaci trzecie, 3 - special
+            //0 - narrator, 1 - gracz, 2 - postaci trzecie, 3 - special
            
             if (kolor == 0) Console.ForegroundColor = ConsoleColor.Yellow;
             else if (kolor == 1) Console.ForegroundColor = ConsoleColor.Green;
@@ -29,6 +50,22 @@ namespace THE_GAME
             Console.ReadKey(true);
         }
 
+        //TODO: Funkcja będąca połączeniem wyborp i wybork
+
+        public static void wybor(int lwybor)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            int[] liczba = new int[lwybor];
+            Console.WriteLine("Co robisz?");
+            Console.WriteLine("");
+            for(int i=1; i<=liczba.Length; i++)
+            {
+                Console.WriteLine("{0}. {1}", i );
+            }
+
+        }
+
         public static void wyborp()
         {
             Console.Clear();
@@ -36,14 +73,16 @@ namespace THE_GAME
             Console.WriteLine("Co robisz?");
             Console.WriteLine("");
         }
-        public static void wybork()
+        public static int wybork(int a)
         {
             Console.ResetColor();
             Console.WriteLine("");
             Console.Write("Twór wybór: ");
+            bool b = int.TryParse(Console.ReadLine(), out a);
+            Console.WriteLine("");
+            return a;
         }
     }
-
     public class menu
     {
         public static void intro()
@@ -107,7 +146,7 @@ namespace THE_GAME
 
             System.Threading.Thread.Sleep(1000);
             var Melody = new System.Media.SoundPlayer();
-            Melody.SoundLocation = @"data/audio/TLG.wav";
+            Melody.SoundLocation = @"data/audio/Forever.wav";
             Melody.PlayLooping();
 
             System.Threading.Thread.Sleep(1000);
@@ -191,6 +230,7 @@ namespace THE_GAME
 
         static void Main(string[] args)
         {
+            Console.Title = "Project_GAME";
             menu.intro();
             player = menu.Name();
             menu.menu_glowne();
@@ -199,6 +239,8 @@ namespace THE_GAME
             else if (kampania == 2) We_Gods();
             else The_Mysterious_Area();
         }
+
+        // TODO: Fabuła The_Heist - prowadzący - Maciek
 
         static void The_Heist()
         {
@@ -242,6 +284,8 @@ namespace THE_GAME
             Console.ReadKey(true);
         }
 
+        // TODO: Fabuła The_Mysterious_AREA - prowadzący - Gambler
+
         static void The_Mysterious_Area()
         {
             var Music = new System.Media.SoundPlayer();
@@ -277,31 +321,52 @@ namespace THE_GAME
 
         }
 
+        // TODO: Fabuła We_GODS - prowadzący - ImQ
+
         static void We_Gods()
         {
             var Music = new System.Media.SoundPlayer();
-            Music.SoundLocation = @"data/audio/lcwdaugh.wav";
-            Music.Play();
+            Music.SoundLocation = @"data/audio/in_the_morning.wav";
+            Music.PlayLooping();
 
             System.Threading.Thread.Sleep(2000);
 
-            say.dialog("n", 3, "Wszędzie wokół ciebie błyskają światła. W jednej dłoni trzymasz\nbrowar, w drugiej papierosa. W uszach słyszysz szum od głośnej\nmuzyki.");
+            say.dialog("n", 3, "Wszędzie wokół ciebie błyskają światła. W jednej dłoni trzymasz\npiwo, w drugiej papierosa. W uszach słyszysz szum od głośnej\nmuzyki.");
             say.dialog("n", 0, "Trzy metry od twojego stolika dostrzegasz dziewczynę. Uśmiecha\nsię do ciebie. Dopijasz resztkę piwa. Czujesz, że zaczyna działać.\nPo chwili jesteś przed nią.");
-            say.dialog(player, 1, "Jak masz na imię?");
-            say.dialog("n", 0, "Na jej twarzy pojawia się uśmiech.");
-            say.dialog("???", 2, "Jestem Eva.");
-            say.dialog("n", 0, "W jednej chwili wzdłuż całego twojego ciała przechodzi lodowaty dreszcz.\nW jej oczach dostrzegasz coś czego jeszcze nie nigdy nie widziałeś.\nPiękno. Pierwiastek boży?");
 
-            int romans;
+            int imie;
             do
             {
                 say.wyborp();
-                Console.WriteLine("1. Całujesz ją.");
+                Console.WriteLine("1. Jak masz na imię?");
                 Console.WriteLine("2. Odchodzisz.");
-                say.wybork();
-                bool a = int.TryParse(Console.ReadLine(), out romans);
+                say.wybork(imie);
             }
-            while (romans != 1 && romans != 2);
+            while (imie != 1 && imie != 2);
+
+            if(imie == 1)
+            {
+            say.dialog(player, 1, "Jak masz na imię?");
+            say.dialog("n", 0, "Na jej twarzy pojawia się uśmiech.");
+            say.dialog("???", 2, "Jestem Eva.");
+            say.dialog("n", 0, "W jednej chwili wzdłuż całego twojego ciała przechodzi lodowaty dreszcz.\nW jej oczach dostrzegasz coś czego jeszcze nie nigdy nie widziałeś.\nPiękno. Pierwiastek boży.");
+
+                int podryw;
+                do
+                {
+                    say.wyborp();
+                    Console.WriteLine("1. Całujesz ją.");
+                    Console.WriteLine("2. Odchodzisz.");
+                    say.wybork(podryw);
+                }
+                while (podryw != 1 && podryw != 2);
+
+                if (podryw == 1)
+                {
+                    say.dialog("n", 0, "Wasze usta spotykają się w namiętnym pocałunku. Czujesz się\ndoskonale. Jesteś panem tego miejsca. Samcem alfa.");
+                }
+
+            }
 
             Console.ReadKey(true);
 
