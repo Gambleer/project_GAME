@@ -52,7 +52,7 @@ namespace THE_GAME
 
         //TODO: Funkcja będąca połączeniem wyborp i wybork
 
-        public static void wybor2(int x1, int x2)
+        /*public static void wybor2(int x1, int x2)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -65,7 +65,7 @@ namespace THE_GAME
             }
 
         }
-
+        */
         public static void wyborp()
         {
             Console.Clear();
@@ -333,14 +333,14 @@ namespace THE_GAME
 
             say.dialog("n", 3, "Wszędzie wokół ciebie błyskają światła. W jednej dłoni trzymasz\npiwo, w drugiej papierosa. W uszach słyszysz szum od głośnej\nmuzyki.");
             say.dialog("n", 0, "Trzy metry od twojego stolika dostrzegasz dziewczynę. Uśmiecha\nsię do ciebie. Dopijasz resztkę piwa. Czujesz, że zaczyna działać.\nPo chwili jesteś przed nią.");
-
+            /*
             int imie;
             do
             {
                 say.wyborp();
                 Console.WriteLine("1. Jak masz na imię?");
                 Console.WriteLine("2. Odchodzisz.");
-                say.wybork(imie);
+                //say.wybork(imie);
             }
             while (imie != 1 && imie != 2);
 
@@ -350,14 +350,14 @@ namespace THE_GAME
             say.dialog("n", 0, "Na jej twarzy pojawia się uśmiech.");
             say.dialog("???", 2, "Jestem Eva.");
             say.dialog("n", 0, "W jednej chwili wzdłuż całego twojego ciała przechodzi lodowaty dreszcz.\nW jej oczach dostrzegasz coś czego jeszcze nie nigdy nie widziałeś.\nPiękno. Pierwiastek boży.");
-
+            
                 int podryw;
                 do
                 {
                     say.wyborp();
                     Console.WriteLine("1. Całujesz ją.");
                     Console.WriteLine("2. Odchodzisz.");
-                    say.wybork(podryw);
+                  //say.wybork(podryw);
                 }
                 while (podryw != 1 && podryw != 2);
 
@@ -367,7 +367,7 @@ namespace THE_GAME
                 }
 
             }
-
+            */
             Console.ReadKey(true);
 
         }
