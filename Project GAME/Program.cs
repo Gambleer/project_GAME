@@ -6,243 +6,12 @@ using System.Media;
 
 namespace THE_GAME
 {
-
-    public class minigame
+    public class campaign
     {
-        //TODO: minigame HEIST - prowadzący - Maciek
-        public static void Heist()
-        {
-
-        }
-
-        //TODO: minigame RUNNING - prowadzący - ImQ
-        public static void Running()
-        {
-
-        }
-
-        //TODO: minigame TEXTS - prowadzący - Gambler
-        public static void Texts()
-        {
-
-        }
-    }
-
-    public class say
-    {
-        public static void dialog(string postac, int kolor, string tekst)
-        {
-            //0 - narrator, 1 - gracz, 2 - postaci trzecie, 3 - special
-           
-            if (kolor == 0) Console.ForegroundColor = ConsoleColor.Yellow;
-            else if (kolor == 1) Console.ForegroundColor = ConsoleColor.Green;
-            else if (kolor == 2) Console.ForegroundColor = ConsoleColor.DarkGreen;
-            else Console.ForegroundColor = ConsoleColor.DarkYellow;
-
-            if (postac != "n")
-            {
-                Console.WriteLine("{0}", postac);
-                Console.ResetColor();
-            }
-            Console.WriteLine("{0}\n", tekst);
-
-            System.Threading.Thread.Sleep(500);
-            Console.ReadKey(true);
-        }
-
-        //TODO: Funkcja będąca połączeniem wyborp i wybork
-
-        /*public static void wybor2(int x1, int x2)
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            int[] liczba = new int[lwybor];
-            Console.WriteLine("Co robisz?");
-            Console.WriteLine("");
-            for(int i=1; i<=liczba.Length; i++)
-            {
-                Console.WriteLine("{0}. {1}", i );
-            }
-
-        }
-        */
-        public static void wyborp()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Co robisz?");
-            Console.WriteLine("");
-        }
-        public static int wybork(int a)
-        {
-            Console.ResetColor();
-            Console.WriteLine("");
-            Console.Write("Twór wybór: ");
-            bool b = int.TryParse(Console.ReadLine(), out a);
-            Console.WriteLine("");
-            return a;
-        }
-    }
-    public class menu
-    {
-        public static void intro()
-        {
-            char[] intro1 = new char[] { 'P', 'l', 'e', 'm', 'i', 'ę' };
-            char[] intro2 = new char[] { 'P', 'r', 'o', 'g', 'r', 'a', 'm', 'i', 's', 't', 'ó', 'w' };
-            char[] intro3 = new char[] { 'p', 'r', 'e', 'z', 'e', 'n', 't', 'u', 'j', 'e', '.', '.', '.' };
-
-            System.Threading.Thread.Sleep(300);
-            for (int i = 0; i < 6; i++)
-            {
-                Console.Write(intro1[i]);
-                System.Threading.Thread.Sleep(70);
-            }
-            Console.Write(" "); System.Threading.Thread.Sleep(20);
-
-            for (int i = 0; i < 12; i++)
-            {
-                Console.Write(intro2[i]);
-                System.Threading.Thread.Sleep(70);
-            }
-            Console.Write(" "); System.Threading.Thread.Sleep(20);
-
-            for (int i = 0; i < 13; i++)
-            {
-                Console.Write(intro3[i]);
-                System.Threading.Thread.Sleep(70);
-            }
-            Console.Write(" "); System.Threading.Thread.Sleep(20);
-
-            Console.Beep(1000, 200);
-            Console.Beep(1500, 200);
-            Console.Beep(2000, 200);
-            Console.Beep(2500, 200);
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Project_GAME");
-            System.Threading.Thread.Sleep(2000);
-            Console.ResetColor();
-            Console.Clear();
-        }
-
-        public static string Name()
-        {
-            Console.Write("Podaj swoję imię: ");
-            string name_string = Console.ReadLine();
-            Console.Clear();
-
-            if (name_string == "") name_string = "Nieznajomy";
-
-            char[] intro4 = new char[] { 'H', 'e', 'l', 'l', 'o' };
-
-            for (int i = 0; i < 5; i++)
-            {
-                Console.Write(intro4[i]);
-                System.Threading.Thread.Sleep(70);
-            }
-            Console.Write(" "); System.Threading.Thread.Sleep(300);
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.Write("{0}", name_string); Console.ResetColor(); Console.Write("!");
-
-            System.Threading.Thread.Sleep(1000);
-            var Melody = new System.Media.SoundPlayer();
-            Melody.SoundLocation = @"data/audio/Forever.wav";
-            Melody.PlayLooping();
-
-            System.Threading.Thread.Sleep(1000);
-            Console.Clear();
-            return (name_string);
-        }
-
-        public static void menu_glowne()
-        {
-            int wybor_podmenu;
-            do
-            {
-                Console.WriteLine("|MENU GLOWNE|");
-                Console.WriteLine("");
-                Console.WriteLine("1. Kampania");
-                Console.WriteLine("2. Autorzy");
-                Console.WriteLine("3. Wyjście");
-                Console.WriteLine("");
-                Console.Write("Wybierz podmenu: ");
-                bool b = int.TryParse(Console.ReadLine(), out wybor_podmenu);
-                switch (wybor_podmenu)
-                {
-                    case 1:
-                        {
-                            Console.Clear();
-                            break;
-                        }
-                    case 2:
-                        {
-                            Console.Clear();
-                            Console.WriteLine("Autorzy:");
-                            Console.WriteLine("");
-                            Console.WriteLine("Michał 'ImQ' Kropkowski");
-                            Console.WriteLine("Rafał 'Gambler' Kostun");
-                            Console.WriteLine("Maciej Smyk");
-                            System.Threading.Thread.Sleep(1000);
-                            Console.WriteLine("");
-                            Console.Write("Nacisnij dowolny klawisz, aby kontynuować.");
-                            Console.ReadKey(true);
-                            break;
-                        }
-                    case 3: Environment.Exit(0); break;
-                    default: break;
-                }
-                Console.Clear();
-            }
-            while (wybor_podmenu != 1);
-        }
-        public static int wybor_kampanii()
-        {
-            int kampania;
-            do
-            {
-                Console.WriteLine("|WYBIERZ OPOWIEŚĆ|");
-                Console.WriteLine("");
-                Console.WriteLine("1. The Heist");
-                Console.WriteLine("2. We, Gods");
-                Console.WriteLine("3. The Mysterious Area");
-                Console.WriteLine("");
-                Console.Write("Wybierz: ");
-                bool b = int.TryParse(Console.ReadLine(), out kampania);
-                Console.Clear();
-            }
-            while ((kampania != 1) && (kampania != 2) && (kampania != 3));
-
-            Console.Clear();
-            return (kampania);
-        }
-
-        static void game_over()
-        {
-            Console.WriteLine("Przegrałeś.");
-            Console.ReadKey(true);
-            Environment.Exit(0);
-        }
-    }
-
-    public class Program
-    {
-        static string player = "Nieznajomy";
-
-        static void Main(string[] args)
-        {
-            Console.Title = "Project_GAME";
-            menu.intro();
-            player = menu.Name();
-            menu.menu_glowne();
-            int kampania = menu.wybor_kampanii();
-            if (kampania == 1) The_Heist();
-            else if (kampania == 2) We_Gods();
-            else The_Mysterious_Area();
-        }
-
+        static string player = Program.player;
         // TODO: Fabuła The_Heist - prowadzący - Maciek
 
-        static void The_Heist()
+        public static void The_Heist()
         {
             var Music = new System.Media.SoundPlayer();
             Music.SoundLocation = @"data/audio/lidcreak.wav";
@@ -286,7 +55,7 @@ namespace THE_GAME
 
         // TODO: Fabuła The_Mysterious_AREA - prowadzący - Gambler
 
-        static void The_Mysterious_Area()
+        public static void The_Mysterious_Area()
         {
             var Music = new System.Media.SoundPlayer();
             Music.SoundLocation = @"data/audio/144950046.wav";
@@ -323,8 +92,8 @@ namespace THE_GAME
 
         // TODO: Fabuła We_GODS - prowadzący - ImQ
 
-        static void We_Gods()
-        {
+        public static void We_Gods()
+        {/*
             var Music = new System.Media.SoundPlayer();
             Music.SoundLocation = @"data/audio/in_the_morning.wav";
             Music.PlayLooping();
@@ -333,31 +102,26 @@ namespace THE_GAME
 
             say.dialog("n", 3, "Wszędzie wokół ciebie błyskają światła. W jednej dłoni trzymasz\npiwo, w drugiej papierosa. W uszach słyszysz szum od głośnej\nmuzyki.");
             say.dialog("n", 0, "Trzy metry od twojego stolika dostrzegasz dziewczynę. Uśmiecha\nsię do ciebie. Dopijasz resztkę piwa. Czujesz, że zaczyna działać.\nPo chwili jesteś przed nią.");
-            /*
+
             int imie;
             do
-            {
-                say.wyborp();
-                Console.WriteLine("1. Jak masz na imię?");
-                Console.WriteLine("2. Odchodzisz.");
-                //say.wybork(imie);
-            }
+                say.wybor2(imie, "Jak masz na imię?", "Odchodzisz.");
             while (imie != 1 && imie != 2);
 
-            if(imie == 1)
+            if (imie == 1)
             {
-            say.dialog(player, 1, "Jak masz na imię?");
-            say.dialog("n", 0, "Na jej twarzy pojawia się uśmiech.");
-            say.dialog("???", 2, "Jestem Eva.");
-            say.dialog("n", 0, "W jednej chwili wzdłuż całego twojego ciała przechodzi lodowaty dreszcz.\nW jej oczach dostrzegasz coś czego jeszcze nie nigdy nie widziałeś.\nPiękno. Pierwiastek boży.");
-            
+                say.dialog(player, 1, "Jak masz na imię?");
+                say.dialog("n", 0, "Na jej twarzy pojawia się uśmiech.");
+                say.dialog("???", 2, "Jestem Eva.");
+                say.dialog("n", 0, "W jednej chwili wzdłuż całego twojego ciała przechodzi lodowaty dreszcz.\nW jej oczach dostrzegasz coś czego jeszcze nie nigdy nie widziałeś.\nPiękno. Pierwiastek boży.");
+
                 int podryw;
                 do
                 {
                     say.wyborp();
                     Console.WriteLine("1. Całujesz ją.");
                     Console.WriteLine("2. Odchodzisz.");
-                  //say.wybork(podryw);
+                    //say.wybork(podryw);
                 }
                 while (podryw != 1 && podryw != 2);
 
@@ -367,9 +131,247 @@ namespace THE_GAME
                 }
 
             }
-            */
-            Console.ReadKey(true);
 
+            Console.ReadKey(true);
+            */
+        }
+    }
+
+    public class minigame
+    {
+        //TODO: minigame HEIST - prowadzący - Maciek
+        public static void Heist()
+        {
+
+        }
+
+        //TODO: minigame RUNNING - prowadzący - ImQ
+        public static void Running()
+        {
+
+        }
+
+        //TODO: minigame TEXTS - prowadzący - Gambler
+        public static void Texts()
+        {
+
+        }
+    }
+
+    public class say
+    {
+        public static void dialog(string postac, int kolor, string tekst)
+        {
+            //0 - narrator, 1 - gracz, 2 - postaci trzecie, 3 - special
+
+            if (kolor == 0) Console.ForegroundColor = ConsoleColor.Yellow;
+            else if (kolor == 1) Console.ForegroundColor = ConsoleColor.Green;
+            else if (kolor == 2) Console.ForegroundColor = ConsoleColor.DarkGreen;
+            else Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+            if (postac != "n")
+            {
+                Console.WriteLine("{0}", postac);
+                Console.ResetColor();
+            }
+            Console.WriteLine("{0}\n", tekst);
+
+            System.Threading.Thread.Sleep(500);
+            Console.ReadKey(true);
+        }
+
+        //TODO: Funkcja będąca połączeniem wyborp i wybork
+
+        public static int wybor(string[] x)
+        {
+            int b;
+            do
+            {
+                int i = 1;
+                Console.Clear();
+                Console.ResetColor();
+                Console.WriteLine("Co robisz?\n");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                foreach (string n in x)
+                {
+                    Console.WriteLine("{0}. {1}", i, n);
+                    i++;
+                }
+                Console.ResetColor();
+                Console.WriteLine();
+                Console.Write("Twór wybór: ");
+                bool a = int.TryParse(Console.ReadLine(), out b);
+                Console.WriteLine();
+            }
+            while ((b < 1) || (b > x.Length));
+            return b;
+        }
+    }
+
+    public class menu
+    {
+        public static void intro()
+        {
+            char[] intro1 = new char[] { 'P', 'l', 'e', 'm', 'i', 'ę' };
+            char[] intro2 = new char[] { 'P', 'r', 'o', 'g', 'r', 'a', 'm', 'i', 's', 't', 'ó', 'w' };
+            char[] intro3 = new char[] { 'p', 'r', 'e', 'z', 'e', 'n', 't', 'u', 'j', 'e', '.', '.', '.' };
+
+            System.Threading.Thread.Sleep(300);
+            foreach(char a in intro1)
+            {
+                Console.Write(a);
+                System.Threading.Thread.Sleep(70);
+            }
+            Console.Write(" "); System.Threading.Thread.Sleep(20);
+
+            foreach (char a in intro2)
+            {
+                Console.Write(a);
+                System.Threading.Thread.Sleep(70);
+            }
+            Console.Write(" "); System.Threading.Thread.Sleep(20);
+
+            foreach (char a in intro3)
+            {
+                Console.Write(a);
+                System.Threading.Thread.Sleep(70);
+            }
+            Console.Write(" "); System.Threading.Thread.Sleep(20);
+
+            Console.Beep(1000, 200);
+            Console.Beep(1500, 200);
+            Console.Beep(2000, 200);
+            Console.Beep(2500, 200);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Project_GAME");
+            System.Threading.Thread.Sleep(2000);
+            Console.ResetColor();
+            Console.Clear();
+        }
+
+        public static string name()
+        {
+            Console.Write("Podaj swoję imię: ");
+            string name_string = Console.ReadLine();
+            Console.Clear();
+
+            if (name_string == "") name_string = "Nieznajomy";
+
+            char[] intro4 = new char[] { 'H', 'e', 'l', 'l', 'o' };
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write(intro4[i]);
+                System.Threading.Thread.Sleep(70);
+            }
+            Console.Write(" "); System.Threading.Thread.Sleep(300);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("{0}", name_string); Console.ResetColor(); Console.Write("!");
+
+            System.Threading.Thread.Sleep(1000);
+            var Melody = new System.Media.SoundPlayer();
+            Melody.SoundLocation = @"data/audio/Forever.wav";
+            Melody.PlayLooping();
+
+            System.Threading.Thread.Sleep(1000);
+            Console.Clear();
+            return (name_string);
+        }
+
+        public static void menu_glowne()
+        {
+            int wybor_podmenu;
+            do
+            {
+                Console.WriteLine("|MENU GLOWNE|");
+                Console.Write("Gracz: ", Program.player);
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine(Program.player);
+                Console.ResetColor();
+                Console.WriteLine();
+                Console.WriteLine("1. Kampania");
+                Console.WriteLine("2. Autorzy");
+                Console.WriteLine("3. Wyjście");
+                Console.WriteLine();
+                Console.Write("Wybierz podmenu: ");
+                bool b = int.TryParse(Console.ReadLine(), out wybor_podmenu);
+                switch (wybor_podmenu)
+                {
+                    case 1:
+                        {
+                            Console.Clear();
+                            wybor_kampanii();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Autorzy:");
+                            Console.WriteLine();
+                            Console.WriteLine("Michał 'ImQ' Kropkowski");
+                            Console.WriteLine("Rafał 'Gambler' Kostun");
+                            Console.WriteLine("Maciej Smyk");
+                            System.Threading.Thread.Sleep(1000);
+                            Console.WriteLine();
+                            Console.Write("Nacisnij dowolny klawisz, aby kontynuować.");
+                            Console.ReadKey(true);
+                            break;
+                        }
+                    case 3: Environment.Exit(0); break;
+                    default: break;
+                }
+                Console.Clear();
+            }
+            while (wybor_podmenu != 1);
+        }
+        public static int wybor_kampanii()
+        {
+            int kampania;
+            do
+            {
+                Console.WriteLine("|WYBIERZ OPOWIEŚĆ|");
+                Console.WriteLine();
+                Console.WriteLine("1. The Heist");
+                Console.WriteLine("2. We, Gods");
+                Console.WriteLine("3. The Mysterious Area");
+                Console.WriteLine();
+                Console.WriteLine("4. Cofnij");
+                Console.WriteLine();
+                Console.Write("Wybierz: ");
+                bool b = int.TryParse(Console.ReadLine(), out kampania);
+                Console.Clear();
+            }
+            while ((kampania != 1) && (kampania != 2) && (kampania != 3) && (kampania !=4));
+            Console.Clear();
+
+            if (kampania == 1) campaign.The_Heist();
+            else if (kampania == 2) campaign.We_Gods();
+            else if (kampania == 3) campaign.The_Mysterious_Area();
+            else if (kampania == 4) menu_glowne();
+            return kampania;
+        }
+
+        static void game_over()
+        {
+            Console.WriteLine("Przegrałeś.");
+            Console.ReadKey(true);
+            menu.menu_glowne();
+        }
+    }
+
+    public class Program
+    {
+        public static string player = "Nieznajomy";
+
+        static void Main(string[] args)
+        {
+            Console.Title = "Project_GAME";
+            say imie = new say();
+
+            menu.intro();
+            player = menu.name();
+            menu.menu_glowne();
         }
 
     }
