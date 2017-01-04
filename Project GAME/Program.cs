@@ -52,7 +52,9 @@ namespace THE_GAME
 
             say.dialog("Don", 2, "A więc ... Co wybierasz?");
 
-            int zabezpieczenia = say.wybor( "Cele o najmniejszych zabezpieczeniach" , "Cele o średnich zabezpieczeniach" , "Cele o największych zabezpieczeniach" );
+            string[] z;
+            int zabezpieczenia = say.wybor(z = new string[] { "Cele o najmniejszych zabezpieczeniach", "Cele o średnich zabezpieczeniach", "Cele o największych zabezpieczeniach" });
+            Console.WriteLine(zabezpieczenia);
 
             Console.ReadKey(true);
         }
