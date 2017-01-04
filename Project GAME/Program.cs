@@ -1,7 +1,5 @@
 ﻿//The Coders Tribe
 //Project_GAME
-//-
-//--
 
 using System;
 using System.Media;
@@ -98,7 +96,7 @@ namespace THE_GAME
         // TODO: Fabuła We_GODS - prowadzący - ImQ
 
         public static void We_Gods()
-        {/*
+        {
             var Music = new System.Media.SoundPlayer();
             Music.SoundLocation = @"data/audio/in_the_morning.wav";
             Music.PlayLooping();
@@ -108,37 +106,16 @@ namespace THE_GAME
             say.dialog("n", 3, "Wszędzie wokół ciebie błyskają światła. W jednej dłoni trzymasz\npiwo, w drugiej papierosa. W uszach słyszysz szum od głośnej\nmuzyki.");
             say.dialog("n", 0, "Trzy metry od twojego stolika dostrzegasz dziewczynę. Uśmiecha\nsię do ciebie. Dopijasz resztkę piwa. Czujesz, że zaczyna działać.\nPo chwili jesteś przed nią.");
 
-            int imie;
-            do
-                say.wybor2(imie, "Jak masz na imię?", "Odchodzisz.");
-            while (imie != 1 && imie != 2);
+            string[] z = new string[] { "Jak masz na imię?", "Odchodzisz." };
+            int imie = say.wybor(z);
 
-            if (imie == 1)
-            {
-                say.dialog(player, 1, "Jak masz na imię?");
-                say.dialog("n", 0, "Na jej twarzy pojawia się uśmiech.");
-                say.dialog("???", 2, "Jestem Eva.");
-                say.dialog("n", 0, "W jednej chwili wzdłuż całego twojego ciała przechodzi lodowaty dreszcz.\nW jej oczach dostrzegasz coś czego jeszcze nie nigdy nie widziałeś.\nPiękno. Pierwiastek boży.");
-
-                int podryw;
-                do
-                {
-                    say.wyborp();
-                    Console.WriteLine("1. Całujesz ją.");
-                    Console.WriteLine("2. Odchodzisz.");
-                    //say.wybork(podryw);
-                }
-                while (podryw != 1 && podryw != 2);
-
-                if (podryw == 1)
-                {
-                    say.dialog("n", 0, "Wasze usta spotykają się w namiętnym pocałunku. Czujesz się\ndoskonale. Jesteś panem tego miejsca. Samcem alfa.");
-                }
-
-            }
+            say.dialog(player, 1, "Jak masz na imię?");
+            say.dialog("n", 0, "Na jej twarzy pojawia się uśmiech.");
+            say.dialog("???", 2, "Jestem Eva.");
+            say.dialog("n", 0, "W jednej chwili wzdłuż całego twojego ciała przechodzi lodowaty dreszcz.\nW jej oczach dostrzegasz coś czego jeszcze nie nigdy nie widziałeś.\nPiękno. Pierwiastek boży.");
 
             Console.ReadKey(true);
-            */
+            
         }
     }
 
@@ -153,7 +130,12 @@ namespace THE_GAME
         //TODO: minigame RUNNING - prowadzący - ImQ
         public static void Running()
         {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("UCIEKAJ!");
+            Console.ResetColor();
+            var Key = Console.ReadKey(true).Key == ConsoleKey.UpArrow;
 
+            Console.ReadKey();
         }
 
         //TODO: minigame TEXTS - prowadzący - Gambler
@@ -184,8 +166,6 @@ namespace THE_GAME
             System.Threading.Thread.Sleep(500);
             Console.ReadKey(true);
         }
-
-        //TODO: Funkcja będąca połączeniem wyborp i wybork
 
         public static int wybor(string[] x)
         {
