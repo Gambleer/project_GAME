@@ -5,6 +5,7 @@
 
 using System;
 using System.Media;
+using System.Windows.Input;
 
 namespace THE_GAME
 {
@@ -54,6 +55,8 @@ namespace THE_GAME
 
             string[] z = new string[] { "Cele o najmniejszych zabezpieczeniach", "Cele o średnich zabezpieczeniach", "Cele o największych zabezpieczeniach" };
             int zabezpieczenia = say.wybor(z);
+
+            Console.WriteLine("{0}", zabezpieczenia);
 
             Console.ReadKey(true);
         }
@@ -148,6 +151,7 @@ namespace THE_GAME
         public static void Heist()
         {
 
+
         }
 
         //TODO: minigame RUNNING - prowadzący - ImQ
@@ -157,8 +161,17 @@ namespace THE_GAME
         }
 
         //TODO: minigame TEXTS - prowadzący - Gambler
-        public static void Texts()
+        public static void Maze()
         {
+            Console.WriteLine("Wpdałeś do labiryntu!");
+            Console.ReadKey();
+            Console.WriteLine("Na każdym rozwidleniu dróg musisz kliknąć odpowiednią strzałkę, jeśli sie pomylisz - prezgrasz!");
+            Console.ReadKey();
+            Console.WriteLine("Start!");
+            Console.ReadKey();
+
+            var Key = Console.ReadKey(true).Key == ConsoleKey.UpArrow;
+
 
         }
     }
