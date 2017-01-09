@@ -51,12 +51,13 @@ namespace THE_GAME
 
             say.dialog("Don", 2, "A więc ... Co wybierasz?");
 
-            string[] z = new string[] { "Cele o najmniejszych zabezpieczeniach", "Cele o średnich zabezpieczeniach", "Cele o największych zabezpieczeniach" };
-            int zabezpieczenia = say.wybor(z);
+            //string[] z = new string[] { "Cele o najmniejszych zabezpieczeniach", "Cele o średnich zabezpieczeniach", "Cele o największych zabezpieczeniach" };
+           // int zabezpieczenia = say.wybor(z);
 
-            Console.WriteLine("{0}", zabezpieczenia);
+           // Console.WriteLine("{0}", zabezpieczenia);
 
-            Console.ReadKey(true);
+            minigame.Heist();
+
         }
 
         // TODO: Fabuła The_Mysterious_AREA - prowadzący - Gambler
@@ -127,7 +128,84 @@ namespace THE_GAME
         //TODO: minigame HEIST - prowadzący - Maciek
         public static void Heist()
         {
+            int a, b, c, d, e, w = 0, s = 3;
+            Random r = new Random();
+            int[] tab = new int[5];
 
+            Console.WriteLine("Celem gry jest prawidłowe zapamiętanie i wpisanie w odpowiedniej kolejności");
+            Console.WriteLine("pojawiających się cyfr. Po wpisaniu każdej liczby naciśnij Enter by wpisać ");
+            Console.WriteLine("kolejną. Baw się dobrze polub nas na Facebooku, zasubuj na YouTube,");
+            Console.WriteLine("śledź nas na Twitterze oraz hojnie wpłacaj kasę na nasz profil na Kickstarterze :D");
+            Console.WriteLine("");
+            Console.WriteLine("<Wciśnij Enter, aby rozpocząć grę>");
+            Console.ReadLine();
+            Console.Clear();
+
+            for (int j = 0; j < 1000; j++)
+            {
+
+                for (int i = 0; i < tab.Length; i++)
+                    tab[i] = r.Next(0, 10);
+
+                for (int i = 0; i < tab.Length; i++)
+                {
+                    Console.Write("{0}", tab[i]);
+                    System.Threading.Thread.Sleep(2000);
+                    Console.Clear();
+                }
+
+                Console.WriteLine("Podaj kod do sejfu:");
+                a = Convert.ToInt32(Console.ReadLine());
+                b = Convert.ToInt32(Console.ReadLine());
+                c = Convert.ToInt32(Console.ReadLine());
+                d = Convert.ToInt32(Console.ReadLine());
+                e = Convert.ToInt32(Console.ReadLine());
+
+                if ((a == tab[0]) && (b == tab[1]) && (c == tab[2]) && (d == tab[3]) && (e == tab[4]))
+                {
+                    Console.WriteLine("Łup jest twój.");
+                    w++;
+                    Console.WriteLine("<Wciśnij dowolny klawisz>");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine("Włączył się alarm!");
+                    s--;
+                    if (s == 0)
+                    {
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("Koniec gry");
+                        Console.WriteLine("Twój wynik to {0}", w);
+                        break;
+                    }
+                    else if (s == 1)
+                    {
+                        Console.WriteLine("Została Ci tylko {0} szansa", s);
+                        Console.WriteLine("<Wciśnij dowolny klawisz>");
+                        Console.ReadLine();
+                        Console.Clear();
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Zostały Ci tylko {0} szanse", s);
+                        Console.WriteLine("<Wciśnij dowolny klawisz>");
+                        Console.ReadLine();
+                        Console.Clear();
+                        continue;
+                    }
+
+                }
+
+
+            }
+            Console.ReadLine();
+
+            Console.Clear();
+            menu.menu_glowne();
 
         }
 
