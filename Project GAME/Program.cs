@@ -64,9 +64,9 @@ namespace THE_GAME
 
         public static void The_Mysterious_Area()
         {
-            var Music = new System.Media.SoundPlayer();
-            Music.SoundLocation = @"data/audio/144950046.wav";
-            Music.PlayLooping();
+            //var Music = new System.Media.SoundPlayer();
+            //Music.SoundLocation = @"data/audio/144950046.wav";
+            //Music.PlayLooping();
 
             System.Threading.Thread.Sleep(2000);
 
@@ -88,10 +88,12 @@ namespace THE_GAME
             say.dialog("Starzec", 2, "Chodź. Zaprowadzę Cię do krypty. Tam wypełnisz swe przeznaczenie.");
 
             Console.Clear();
-            Music.Stop();
+            //Music.Stop(); 
 
             say.dialog("n", 0, "Schodzicie w dół mrocznych katakumb. W nieznane.");
-            say.dialog("n", 0, "W końcu dochodzicie do rozstaju dróg.");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            minigame.Maze();
 
             Console.ReadKey(true);
 
@@ -220,18 +222,142 @@ namespace THE_GAME
             Console.ReadKey();
         }
 
-        //TODO: minigame TEXTS - prowadzący - Gambler
-        public static void Maze()
+                        //TODO: minigame TEXTS - prowadzący - GAMBLEER
+
+            static int losuj_strzalke()
+            {
+
+                Random r = new Random();
+                int x = r.Next(1, 5);
+                return x;
+            }
+
+            //static int sprawdz_strzalke(int sprawdz)
+
+            static void testuj_strzalki()
+            {
+
+                int test2 = 0, temp1 = 1, temp2 = 1, temp3 = 1, temp4 = 1;
+                //int test1 = 1,
+                do
+                {
+                    int number = losuj_strzalke();
+
+                    switch (number)
+                    {
+                        case 1:
+                            Console.WriteLine("Kliknij strzałke w górę");
+                            /* System.Threading.Thread.Sleep(2000);
+
+                         var Key1 = Console.ReadKey().Key;
+                         test1 = Convert.ToInt16(Key1);
+
+                         if (test1 == 0) { Console.WriteLine("Przegrałeś!"); temp1 = 0; }
+                         else
+                         { */
+                            var Key2 = Console.ReadKey(true).Key == ConsoleKey.UpArrow;
+                            test2 = Convert.ToInt16(Key2);
+                            temp1 = test2;
+                            //}
+                            break;
+
+
+                        case 2:
+                            Console.WriteLine("Kliknij strzałke w dół");
+                            /* System.Threading.Thread.Sleep(2000);
+
+                          var Key3 = Console.ReadKey().Key;
+                          test1 = Convert.ToInt16(Key3);
+
+                          if (test1 == 0) { Console.WriteLine("Przegrałeś!"); temp1 = 0; }
+                          else
+                          { */
+                            var Key4 = Console.ReadKey(true).Key == ConsoleKey.DownArrow;
+                            test2 = Convert.ToInt16(Key4);
+                            temp2 = test2;
+                            //}
+                            break;
+
+
+                        case 3:
+                            Console.WriteLine("Kliknij strzałke w prawo");
+                            /* System.Threading.Thread.Sleep(2000);
+
+                        var Key5 = Console.ReadKey().Key;
+                        test1 = Convert.ToInt16(Key5);
+
+                        if (test1 == 0) { Console.WriteLine("Przegrałeś!"); temp1 = 0; }
+                        else
+                        {*/
+                            var Key6 = Console.ReadKey(true).Key == ConsoleKey.RightArrow;
+                            test2 = Convert.ToInt16(Key6);
+                            temp3 = test2;
+                            //}
+                            break;
+
+
+                        case 4:
+                            Console.WriteLine("Kliknij strzałke w lewo");
+                            /* System.Threading.Thread.Sleep(2000);
+
+                         var Key7 = Console.ReadKey().Key;
+                         test1 = Convert.ToInt16(Key7);
+
+                         if (test1 == 0) { Console.WriteLine("Przegrałeś!"); temp1 = 0; }
+                         else
+                         {*/
+                            var Key8 = Console.ReadKey(true).Key == ConsoleKey.LeftArrow;
+                            test2 = Convert.ToInt16(Key8);
+                            temp4 = test2;
+                            // }
+                            break;
+                    }
+
+
+                } while (temp1 == 1 && temp2 == 1 && temp3 == 1 && temp4 == 1);
+
+            }
+
+            static void start_gry()
+
+            {
+                for (int i = 3; i > 0; i--)
+                {
+
+                    Console.WriteLine();
+                    Console.ReadKey();
+
+                    testuj_strzalki();
+
+                    Console.WriteLine();
+                    Console.WriteLine("Przegrałeś!");
+                    Console.WriteLine();
+                    if (i > 1)
+                    {
+                        Console.WriteLine("Pozostały Ci {0} życia", i - 1);
+                        Console.WriteLine();
+                        Console.WriteLine("Spóbuj jeszcze raz!");
+                    }
+                }
+            }
+
+    public static void Maze()
         {
+
             Console.WriteLine("Wpdałeś do labiryntu!");
+            Console.WriteLine();
             Console.ReadKey();
             Console.WriteLine("Na każdym rozwidleniu dróg musisz kliknąć odpowiednią strzałkę, jeśli sie pomylisz - prezgrasz!");
+            Console.WriteLine();
             Console.ReadKey();
-            Console.WriteLine("Start!");
+            Console.WriteLine("Masz 3 życia");
+            Console.WriteLine();
             Console.ReadKey();
+            Console.WriteLine("Kliknij klawisz aby zacząć!");
 
-            var Key = Console.ReadKey(true).Key == ConsoleKey.UpArrow;
+            start_gry();
 
+            Console.ReadKey(true);
 
         }
     }
