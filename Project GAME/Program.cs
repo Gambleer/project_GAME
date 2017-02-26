@@ -5,6 +5,7 @@ using System;
 using System.Media;
 using System.Windows.Input;
 using System.IO;
+using System.Diagnostics;
 
 namespace THE_GAME
 {
@@ -65,9 +66,9 @@ namespace THE_GAME
 
         public static void The_Mysterious_Area()
         {
-            //var Music = new System.Media.SoundPlayer();
-            //Music.SoundLocation = @"data/audio/144950046.wav";
-            //Music.PlayLooping();
+            var Music = new System.Media.SoundPlayer();
+            Music.SoundLocation = @"data/audio/144950046.wav";
+            Music.PlayLooping();
 
             System.Threading.Thread.Sleep(2000);
 
@@ -89,7 +90,7 @@ namespace THE_GAME
             say.dialog("Starzec", 2, "Chodź. Zaprowadzę Cię do krypty. Tam wypełnisz swe przeznaczenie.");
 
             Console.Clear();
-            //Music.Stop(); 
+            Music.Stop(); 
 
             say.dialog("n", 0, "Schodzicie w dół mrocznych katakumb. W nieznane.");
 
@@ -122,7 +123,10 @@ namespace THE_GAME
             say.dialog("n", 0, "W jednej chwili wzdłuż całego twojego ciała przechodzi lodowaty dreszcz.\nW jej oczach dostrzegasz coś czego jeszcze nie nigdy nie widziałeś.\nPiękno. Pierwiastek boży.");
 
             Console.ReadKey(true);
-            
+
+            minigame.Running(20, 10000);
+
+
         }
     }
 
@@ -292,26 +296,136 @@ namespace THE_GAME
 
         }
 
-        //TODO: minigame RUNNING - prowadzący - ImQ
-        public static void Running()
+        static int losuj_strzalke()
         {
+
+            Random r = new Random();
+            int x = r.Next(1, 5);
+            return x;
+        }
+
+        //TODO: minigame RUNNING - prowadzący - ImQ
+        public static void Running(int Potrzebne_Wcisniecia, int Czas)
+        {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("UCIEKAJ!");
             Console.ResetColor();
-            var Key = Console.ReadKey(true).Key == ConsoleKey.UpArrow;
 
-            Console.ReadKey();
+            int kierunek = losuj_strzalke();
+            if (kierunek == 1) Console.WriteLine("GÓRA");
+            else if (kierunek == 2) Console.WriteLine("DÓŁ");
+            else if (kierunek == 3) Console.WriteLine("LEWO");
+            else if (kierunek == 4) Console.WriteLine("PRAWO");
+
+            var Key1 = ConsoleKey.UpArrow;
+            var Key2 = ConsoleKey.DownArrow;
+            var Key3 = ConsoleKey.LeftArrow;
+            var Key4 = ConsoleKey.RightArrow;
+
+            int Liczba_Wcisniec = 0;
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            while (sw.ElapsedMilliseconds < Czas)
+            {
+                
+                    switch (kierunek)
+                    {
+                        case 1:
+                            {
+                            if (Key1 == Console.ReadKey(true).Key)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("DOBRZE! ");
+                                Console.ResetColor();
+                                Liczba_Wcisniec++;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("ŹLE! ");
+                                Console.ResetColor();
+                                Liczba_Wcisniec--;
+                            }
+                            break;
+                            }
+                        case 2:
+                        {
+                            if (Key2 == Console.ReadKey(true).Key)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("DOBRZE! ");
+                                Console.ResetColor();
+                                Liczba_Wcisniec++;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("ŹLE! ");
+                                Console.ResetColor();
+                                Liczba_Wcisniec--;
+                            }
+                            break;
+                        }
+                    case 3:
+                        {
+                            if (Key3 == Console.ReadKey(true).Key)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("DOBRZE! ");
+                                Console.ResetColor();
+                                Liczba_Wcisniec++;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("ŹLE! ");
+                                Console.ResetColor();
+                                Liczba_Wcisniec--;
+                            }
+                            break;
+                        }
+                    case 4:
+                        {
+                            if (Key4 == Console.ReadKey(true).Key)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("DOBRZE! ");
+                                Console.ResetColor();
+                                Liczba_Wcisniec++;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("ŹLE! ");
+                                Console.ResetColor();
+                                Liczba_Wcisniec--;
+                            }
+                            break;
+                        }
+                    }
+            }
+            sw.Stop();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("STOP");
+            Console.ResetColor();
+            Console.WriteLine("Liczba wciśnięć = {0}", Liczba_Wcisniec);
+            Console.WriteLine("Potrzebna liczba wciśnięć = {0}", Potrzebne_Wcisniecia);
+            if (Liczba_Wcisniec < Potrzebne_Wcisniecia)
+            {
+                Console.WriteLine("PRZEGRAŁEŚ");
+                System.Threading.Thread.Sleep(3000);
+                Console.ReadKey(true);
+                Console.Clear();
+                menu.menu_glowne();
+            }
+            else Console.WriteLine("WYGRAŁEŚ");
+            System.Threading.Thread.Sleep(3000);
+            Console.ReadKey(true);
         }
 
-                        //TODO: minigame TEXTS - prowadzący - GAMBLEER
-
-            static int losuj_strzalke()
-            {
-
-                Random r = new Random();
-                int x = r.Next(1, 5);
-                return x;
-            }
+        //TODO: minigame TEXTS - prowadzący - GAMBLEER
 
             //static int sprawdz_strzalke(int sprawdz)
 
@@ -653,8 +767,8 @@ namespace THE_GAME
         static void Main(string[] args)
         {
             Console.Title = "Project_GAME";
-            menu.intro();
-            player = menu.name();
+            //menu.intro();
+            //player = menu.name();
             menu.menu_glowne();
         }
 
