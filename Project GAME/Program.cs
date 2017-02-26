@@ -209,6 +209,7 @@ namespace THE_GAME
 
             Console.WriteLine("KONIEC ROZDZIAŁU II\n\n<Wciśnij Escape, aby wrócić do menu>");
             while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            Console.Clear();
             menu.wybor_kampanii();
         }
 
@@ -222,6 +223,7 @@ namespace THE_GAME
 
             Console.WriteLine("KONIEC ROZDZIAŁU III\n\n<Wciśnij Escape, aby wrócić do menu>");
             while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            Console.Clear();
             menu.wybor_kampanii();
         }
     }
