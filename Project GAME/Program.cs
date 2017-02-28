@@ -67,7 +67,7 @@ namespace THE_GAME
         public static void The_Mysterious_Area()
         {
             var Music = new System.Media.SoundPlayer();
-            Music.SoundLocation = @"data/audio/144950046.wav";
+            //Music.SoundLocation = @"data/audio/144950046.wav";
             Music.PlayLooping();
 
             System.Threading.Thread.Sleep(2000);
@@ -95,7 +95,7 @@ namespace THE_GAME
             say.dialog("n", 0, "Schodzicie w dół mrocznych katakumb. W nieznane.");
 
             Console.ForegroundColor = ConsoleColor.Red;
-            minigame.Maze();
+            minigame.Maze(1);
 
             Console.ReadKey(true);
 
@@ -538,106 +538,99 @@ namespace THE_GAME
 
         //TODO: minigame TEXTS - prowadzący - GAMBLEER
 
-            //static int sprawdz_strzalke(int sprawdz)
+        //static int sprawdz_strzalke(int sprawdz)
 
-            static void testuj_strzalki()
-            {
+        static int testuj_strzalki(int time)
+        {
+            Stopwatch zegar = new Stopwatch();
+
+            zegar.Start();
 
                 int test2 = 0, temp1 = 1, temp2 = 1, temp3 = 1, temp4 = 1;
-                //int test1 = 1,
-                do
-                {
+
+
+                        int i = 0;
+                 do
+
+                    {
+                    
                     int number = losuj_strzalke();
 
                     switch (number)
                     {
                         case 1:
                             Console.WriteLine("Kliknij strzałke w górę");
-                            /* System.Threading.Thread.Sleep(2000);
-
-                         var Key1 = Console.ReadKey().Key;
-                         test1 = Convert.ToInt16(Key1);
-
-                         if (test1 == 0) { Console.WriteLine("Przegrałeś!"); temp1 = 0; }
-                         else
-                         { */
+                            
                             var Key2 = Console.ReadKey(true).Key == ConsoleKey.UpArrow;
                             test2 = Convert.ToInt16(Key2);
                             temp1 = test2;
-                            //}
+                          
                             break;
 
 
                         case 2:
                             Console.WriteLine("Kliknij strzałke w dół");
-                            /* System.Threading.Thread.Sleep(2000);
-
-                          var Key3 = Console.ReadKey().Key;
-                          test1 = Convert.ToInt16(Key3);
-
-                          if (test1 == 0) { Console.WriteLine("Przegrałeś!"); temp1 = 0; }
-                          else
-                          { */
+                            
                             var Key4 = Console.ReadKey(true).Key == ConsoleKey.DownArrow;
                             test2 = Convert.ToInt16(Key4);
                             temp2 = test2;
-                            //}
+                            
                             break;
 
 
                         case 3:
                             Console.WriteLine("Kliknij strzałke w prawo");
-                            /* System.Threading.Thread.Sleep(2000);
-
-                        var Key5 = Console.ReadKey().Key;
-                        test1 = Convert.ToInt16(Key5);
-
-                        if (test1 == 0) { Console.WriteLine("Przegrałeś!"); temp1 = 0; }
-                        else
-                        {*/
+                            
                             var Key6 = Console.ReadKey(true).Key == ConsoleKey.RightArrow;
                             test2 = Convert.ToInt16(Key6);
                             temp3 = test2;
-                            //}
+                            
                             break;
 
 
                         case 4:
                             Console.WriteLine("Kliknij strzałke w lewo");
-                            /* System.Threading.Thread.Sleep(2000);
-
-                         var Key7 = Console.ReadKey().Key;
-                         test1 = Convert.ToInt16(Key7);
-
-                         if (test1 == 0) { Console.WriteLine("Przegrałeś!"); temp1 = 0; }
-                         else
-                         {*/
+                          
                             var Key8 = Console.ReadKey(true).Key == ConsoleKey.LeftArrow;
                             test2 = Convert.ToInt16(Key8);
                             temp4 = test2;
-                            // }
+                          
                             break;
                     }
 
+                i++;
 
-                } while (temp1 == 1 && temp2 == 1 && temp3 == 1 && temp4 == 1);
+                } while (temp1 == 1 && temp2 == 1 && temp3 == 1 && temp4 == 1 && zegar.ElapsedMilliseconds <= time);
 
-            }
+            return i;
+        }
 
-            static void start_gry()
+        static int start_gry(int timeout, int level)
 
+        {
+                int zwracana = 0;
+                int time = timeout * 1000 * (1/level);
+
+            for (int i = 3; i > 0; i--)
             {
-                for (int i = 3; i > 0; i--)
-                {
+
+                Console.WriteLine();
+                Console.ReadKey();
+
+
+                int wynik = testuj_strzalki(time);
+
+
+                Console.WriteLine();
+                
+
+                Console.WriteLine("Twój wynik to: {0}", wynik); // Pobierz wartość czy błędnie kliknięto czy jest timeout, warotś za duża o 1
+
+                if (wynik >= timeout) { Console.WriteLine("Udało Ci się przejść ten poziom!"); i = 0; zwracana = 1; }
+                else { Console.WriteLine("Przegrałeś! Aby przejść ten poziom potrzebujesz minimum {0}!", timeout); zwracana = 0; }
 
                     Console.WriteLine();
-                    Console.ReadKey();
 
-                    testuj_strzalki();
-
-                    Console.WriteLine();
-                    Console.WriteLine("Przegrałeś!");
-                    Console.WriteLine();
                     if (i > 1)
                     {
                         Console.WriteLine("Pozostały Ci {0} życia", i - 1);
@@ -645,10 +638,13 @@ namespace THE_GAME
                         Console.WriteLine("Spóbuj jeszcze raz!");
                     }
                 }
-            }
+            return zwracana;
+        }
 
-    public static void Maze()
+
+    public static void Maze(int level)
         {
+            
 
             Console.WriteLine("Wpdałeś do labiryntu!");
             Console.WriteLine();
@@ -660,8 +656,12 @@ namespace THE_GAME
             Console.WriteLine();
             Console.ReadKey();
             Console.WriteLine("Kliknij klawisz aby zacząć!");
+            
 
-            start_gry();
+            int kontynuacja = start_gry(30, level);
+
+            if (kontynuacja == 1) Console.WriteLine("Grasz dalej! :) ");
+            else Console.WriteLine("Żegnaj! :( Spróbuj łatwiejszego poziomu! ");
 
             tablica_wynikow.wpisz_wynik(1, 11);
 
