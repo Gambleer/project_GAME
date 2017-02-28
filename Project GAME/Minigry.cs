@@ -88,15 +88,6 @@ namespace THE_GAME
             menu.menu_glowne();
         }
 
-        static int losuj_strzalke()
-        {
-
-            Random r = new Random();
-            int x = r.Next(1, 5);
-            return x;
-        }
-
-        //TODO: minigame RUNNING - prowadzący - ImQ
         public static void Running(int Potrzebne_Wcisniecia, int Czas)
         {
             Console.Clear();
@@ -227,6 +218,14 @@ namespace THE_GAME
             else Console.WriteLine("- WYGRAŁEŚ\n\n<Wciśnij Escape, aby opuścić minigrę>");
             while (Console.ReadKey(true).Key != ConsoleKey.Escape) ;
             Console.Clear();
+        }
+
+        static int losuj_strzalke()
+        {
+
+            Random r = new Random();
+            int x = r.Next(1, 5);
+            return x;
         }
 
         static int przechwycony_wynik = 0;

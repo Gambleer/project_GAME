@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace THE_GAME
 {
-
     public class menu
     {
         public static string poziom(int level)
         {
-
             string poziom = "";
             switch (level)
             {
@@ -243,5 +241,4 @@ namespace THE_GAME
             menu.menu_glowne();
         }
     }
-
 }

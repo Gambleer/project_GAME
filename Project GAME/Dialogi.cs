@@ -9,7 +9,7 @@ namespace THE_GAME
     class say
     {
             public static void dialog(string postac, int kolor, string tekst)
-        {
+            {
                 //0 - narrator, 1 - gracz, 2 - postaci trzecie, 3 - special
 
                 if (kolor == 0) Console.ForegroundColor = ConsoleColor.Yellow;

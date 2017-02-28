@@ -219,9 +219,10 @@ namespace THE_GAME
                 say.dialog("n", 0, "Krzyknął jeden z twoich towarzyszy i zaraz\npo tym wystrzelił serie w sufit.\nMasa tynku runęła na ziemię.");
                 say.dialog("Eva", 1, "Tu jest ze sto osób! Co z nimi robimy?\nTrzymamy na zakładników, czy może urządzimy małą rzeź?");
 
+                //string z = new string[] { "Was to bawi?", "<śmiech>" };
+                //int nieznajomi = say.wybor(z);
 
-
-                Console.WriteLine("KONIEC ROZDZIAŁU II\n\n<Wciśnij Escape, aby wrócić do menu>");
+            Console.WriteLine("KONIEC ROZDZIAŁU II\n\n<Wciśnij Escape, aby wrócić do menu>");
                 while (Console.ReadKey(true).Key != ConsoleKey.Escape) ;
                 Console.Clear();
                 menu.wybor_kampanii();
