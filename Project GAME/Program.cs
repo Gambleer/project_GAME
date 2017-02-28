@@ -289,6 +289,7 @@ namespace THE_GAME
 
                 int temp = odczytaj_wartosc(2);
 
+
                 if (temp < wartosc)
                 {
                     FileStream plik2 = new FileStream(nazwaPliku, FileMode.Create, FileAccess.Write, FileShare.None);
