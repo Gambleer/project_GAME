@@ -571,7 +571,7 @@ namespace THE_GAME
             double value = 0;
             if (level == 1) value = 1.2;
             if (level == 2) value = 1.5;
-            if (level == 3) value = 1.7;
+            if (level == 3) value = 2;
 
             return value;
         }
@@ -879,7 +879,7 @@ namespace THE_GAME
             int wybor_podmenu;
             do
             {
-                Console.WriteLine("|MENU GLOWNE|");
+                Console.WriteLine("|MENU GLOWNE| Project_GAME v.1.0.0 | All rights reserved.");
                 Console.Write("Gracz: ", Program.player);
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine(Program.player);
