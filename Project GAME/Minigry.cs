@@ -90,6 +90,7 @@ namespace THE_GAME
 
         public static void Running(int Potrzebne_Wcisniecia, int Czas)
         {
+            Potrzebne_Wcisniecia *= mnoznik2;
             Console.Clear();
             Console.WriteLine("PRZYGOTUJ SIĘ...");
             System.Threading.Thread.Sleep(1000);
@@ -222,7 +223,6 @@ namespace THE_GAME
 
         static int losuj_strzalke()
         {
-
             Random r = new Random();
             int x = r.Next(1, 5);
             return x;
@@ -236,6 +236,16 @@ namespace THE_GAME
             if (level == 1) value = 1.2;
             if (level == 2) value = 1.5;
             if (level == 3) value = 2;
+
+            return value;
+        }
+
+        static double mnoznik2()
+        {
+            double value = 0;
+            if (menu.poziom_trudnosci() == 1) value = 0.8;
+            if (menu.poziom_trudnosci() == 2) value = 1;
+            if (menu.poziom_trudnosci() == 3) value = 1.2;
 
             return value;
         }
@@ -310,7 +320,6 @@ namespace THE_GAME
 
         {
             int zwracana = 0;
-
 
             for (int i = 3; i > 0; i--)
             {

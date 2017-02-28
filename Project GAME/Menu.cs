@@ -137,49 +137,33 @@ namespace THE_GAME
             while (wybor_podmenu != 1);
         }
 
-        public static int poziom_trudnosci()
+        public static int wybor_kampanii()
         {
-            int level = 0;
-            Console.Clear();
-
+            int kampania;
             do
             {
-
-                Console.WriteLine("Wybierz poziom trudności:");
-
+                Console.WriteLine("|WYBIERZ OPOWIEŚĆ|");
                 Console.WriteLine();
-
-                Console.Write("1. ");
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("Easy");
-                Console.ResetColor();
-
+                Console.WriteLine("1. The Heist");
+                Console.WriteLine("2. We, Gods");
+                Console.WriteLine("3. The Mysterious Area");
                 Console.WriteLine();
-
-                Console.Write("2. ");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write("Normal");
-                Console.ResetColor();
-
+                Console.WriteLine("4. Cofnij");
                 Console.WriteLine();
-
-                Console.Write("3. ");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("Hardcore");
-                Console.ResetColor();
-
-                Console.WriteLine();
-
-                Console.Write("Wybierz poziom: ");
-
-                bool b = int.TryParse(Console.ReadLine(), out level);
+                Console.Write("Wybierz: ");
+                bool b = int.TryParse(Console.ReadLine(), out kampania);
                 Console.Clear();
-
-            } while (level != 1 && level != 2 && level != 3);
-
+            }
+            while ((kampania != 1) && (kampania != 2) && (kampania != 3) && (kampania != 4));
             Console.Clear();
-            return level;
+
+            if (kampania == 1) Heist.The_Heist();
+            else if (kampania == 2) wybor_rozdzialu();
+            else if (kampania == 3) Mysterious.The_Mysterious_Area();
+            else if (kampania == 4) menu_glowne();
+            return kampania;
         }
+
         public static int wybor_rozdzialu()
         {
             int rozdzial;
@@ -206,31 +190,43 @@ namespace THE_GAME
             return (rozdzial);
         }
 
-        public static int wybor_kampanii()
+        public static int poziom_trudnosci()
         {
-            int kampania;
-            do
-            {
-                Console.WriteLine("|WYBIERZ OPOWIEŚĆ|");
-                Console.WriteLine();
-                Console.WriteLine("1. The Heist");
-                Console.WriteLine("2. We, Gods");
-                Console.WriteLine("3. The Mysterious Area");
-                Console.WriteLine();
-                Console.WriteLine("4. Cofnij");
-                Console.WriteLine();
-                Console.Write("Wybierz: ");
-                bool b = int.TryParse(Console.ReadLine(), out kampania);
-                Console.Clear();
-            }
-            while ((kampania != 1) && (kampania != 2) && (kampania != 3) && (kampania != 4));
+            int level = 0;
             Console.Clear();
 
-            if (kampania == 1) Heist.The_Heist();
-            else if (kampania == 2) wybor_rozdzialu();
-            else if (kampania == 3) Mysterious.The_Mysterious_Area();
-            else if (kampania == 4) menu_glowne();
-            return kampania;
+            do
+            {
+                Console.WriteLine("|POZIOM TRUDNOŚCI|");
+                Console.WriteLine();
+
+                Console.Write("1. ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("Łatwy");
+                Console.ResetColor();
+
+                Console.WriteLine();
+
+                Console.Write("2. Normalny");
+
+                Console.WriteLine();
+
+                Console.Write("3. ");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Hardkorowy");
+                Console.ResetColor();
+
+                Console.WriteLine();
+                Console.Write("Wybierz poziom: ");
+
+                bool b = int.TryParse(Console.ReadLine(), out level);
+                Console.Clear();
+
+            }
+            while (level != 1 && level != 2 && level != 3);
+
+            Console.Clear();
+            return level;
         }
 
         public static void game_over()
