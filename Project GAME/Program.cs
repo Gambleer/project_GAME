@@ -23,29 +23,19 @@ namespace THE_GAME
             System.Threading.Thread.Sleep(2000);
 
             say.dialog("n", 3, "< Miejsce: Opuszczony magazyn >\n< Data: Nieznana >\n< Godzina: 00:30 >");
-
             say.dialog("n", 0, "Pod osłoną nocy wchodzisz do środka budynku i rozglądasz się dookoła.");
-
             say.dialog("???", 2, "W końcu! Ileż można czekać.");
-
             say.dialog("n", 0, "Spoglądasz na uchylone drzwi na prawo od ciebie.");
-
             say.dialog("???", 2, "Masz kasę?");
-
             say.dialog("n", 0, "Rzucasz rulon pełen banknotów w stronę drzwi.");
-
             say.dialog(player, 1, "Powinienem dostać zniżkę Don. Wiesz ile się tu tłukłem?\nNie jestem jakimś studentem UG by SKM'kami zapie....");
             say.dialog("Don", 2, "Dobra, dobra. To co tu masz zwróci Ci za bilet. A teraz chodź i słuchaj.");
-
             say.dialog("n", 0, "Idziesz za Don'em do pokoju, gdzie widzisz na stole 3 pendrive'y.\nSą podpisane cyframi 1,2,3.");
             Console.Clear();
 
             say.dialog("Don", 2, "Tak jak chciałeś. Listy wszystkich mieszkańców, firm i innego\nbadziewia w tym mieście. Nie wiesz nawet ile to kompletowałem.\nA ty jeszcze zniżki chcesz.");
-
             say.dialog("n", 0, "Nie zwracając uwagi na narzekania Don'a wracasz do tematu.");
-
             say.dialog(player, 1, "A więc co dokładnie oznaczają te cyfry?");
-
             say.dialog("Don", 2, "1 to cele o najmniejszych zabezpieczeniach.\nOraz o najmniej pojemnych skarbonkach. Nie znajdziesz\nnic cennego, ale łup to łup.");
             say.dialog("Don", 2, "2 to cele o średnich zabezpieczeniach. Kilku korpo-gnojków.\nWiesz ludzi co mają tatusia na szczeblu lub wujka\nw prokuraturze i dostają ważne dane firmy jako część swoich\nprzywilejów. Przywilejów, które mogą zapewnić Ci trochę $$$\nna lewym koncie bankowym.");
             say.dialog("Don", 2, "3 to cele o największych zabezpieczeniach. Kojarzysz\nkilku miejscowych polityków co są zamieszani w kontakty\nz lokalnym Boss'em podziemia. Cóż nie zostaniesz raczej\nwpisany na liste jego ulubionych osób, jeżeli wybierzesz\ntę listę. Chyba, że lubisz pływać z rybkami w betnowych\nbucikach. Poza tym, że są to najcięższe sejfy to dodatkowo\nkręci się tam stała ochrona, więc nie będziesz mieć czasu\nna zwiedzanie.");
@@ -121,10 +111,10 @@ namespace THE_GAME
             Console.Write("ROZDZIAŁ I: CHAOS");
             System.Threading.Thread.Sleep(2000);
             Console.Clear();
+
             var Music = new System.Media.SoundPlayer();
             Music.SoundLocation = @"data/audio/in_the_morning.wav";
             Music.PlayLooping();
-
 
             say.dialog("n", 3, "Wszędzie wokół ciebie błyskają światła. W jednej dłoni trzymasz\npiwo, w drugiej papierosa. W uszach słyszysz szum od głośnej\nmuzyki.");
             say.dialog("n", 0, "Trzy metry od twojego stolika dostrzegasz dziewczynę. Uśmiecha\nsię do ciebie. Dopijasz resztkę piwa. Czujesz, że zaczyna działać.\nPo chwili jesteś przed nią.");
@@ -229,8 +219,7 @@ namespace THE_GAME
 
            
 
-
-                       Console.WriteLine("KONIEC ROZDZIAŁU II\n\n<Wciśnij Escape, aby wrócić do menu>");
+            Console.WriteLine("KONIEC ROZDZIAŁU II\n\n<Wciśnij Escape, aby wrócić do menu>");
             while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             Console.Clear();
             menu.wybor_kampanii();
@@ -733,66 +722,9 @@ namespace THE_GAME
         }
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    public class say
-    {
-        public static void dialog(string postac, int kolor, string tekst)
-        {
-            //0 - narrator, 1 - gracz, 2 - postaci trzecie, 3 - special
-
-            if (kolor == 0) Console.ForegroundColor = ConsoleColor.Yellow;
-            else if (kolor == 1) Console.ForegroundColor = ConsoleColor.Green;
-            else if (kolor == 2) Console.ForegroundColor = ConsoleColor.DarkGreen;
-            else Console.ForegroundColor = ConsoleColor.DarkYellow;
-
-            if (postac != "n")
-            {
-                Console.WriteLine("{0}", postac);
-                Console.ResetColor();
-            }
-            Console.WriteLine("{0}\n", tekst);
-            Console.ResetColor();
-
-            System.Threading.Thread.Sleep(500);
-            Console.ReadKey(true);
-        }
-
-        public static int wybor(string[] x)
-        {
-            int b;
-            do
-            {
-                int i = 1;
-                Console.Clear();
-                Console.ResetColor();
-                Console.WriteLine("Co robisz?\n");
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                foreach (string n in x)
-                {
-                    Console.WriteLine("{0}. {1}", i, n);
-                    i++;
-                }
-                Console.ResetColor();
-                Console.WriteLine();
-                Console.Write("Twór wybór: ");
-                bool a = int.TryParse(Console.ReadLine(), out b);
-                Console.WriteLine();
-            }
-            while ((b < 1) || (b > x.Length));
-            return b;
-        }
-    }
-
-
     public class menu
     {
         public static string poziom (int level)
-            
             {
 
                 string poziom = "";
@@ -801,10 +733,11 @@ namespace THE_GAME
                 case 1: { poziom = "Easy"; break; }
                 case 2: { poziom = "Normal"; break; }
                 case 3: { poziom = "Hardcore"; break; }
-
                 }
+
             return poziom;
         }
+
         public static void intro()
         {
             char[] intro1 = new char[] { 'P', 'l', 'e', 'm', 'i', 'ę' };
@@ -968,7 +901,7 @@ namespace THE_GAME
 
         public static int wybor_kampanii()
         {
-            int kampania,rozdzial;
+            int kampania, rozdzial;
             do
             {
                 Console.WriteLine("|WYBIERZ OPOWIEŚĆ|");
@@ -1030,8 +963,8 @@ namespace THE_GAME
         static void Main(string[] args)
         {
             Console.Title = "Project_GAME";
-            menu.intro();
-            player = menu.name();
+            //menu.intro();
+            //player = menu.name();
             menu.menu_glowne();
         }
 
