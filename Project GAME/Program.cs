@@ -193,7 +193,7 @@ namespace THE_GAME
                 say.dialog("Eva", 1, "Idziemy obrabować bank.");
             }
             Console.WriteLine("KONIEC ROZDZIAŁU I\n\n<Wciśnij Escape, aby wrócić do menu>");
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             menu.wybor_kampanii();
         }
 
@@ -204,11 +204,20 @@ namespace THE_GAME
             Console.Clear();
 
             say.dialog("n", 0, "Otacza was policja. Oczy łzawią od świateł.\nKtoś rzuca w stronę radiowozów parę granatów.\nEksplozja cię ogłusza, wyjmujesz broń i strzelasz.");
+            say.dialog("Eva", 1, "Cholera! Ale jazda!");
+            say.dialog("n", 0, "Nagle strzały ucichły. To chyba wszystko.\nPrzed wami stoi ogromny budynek jednego z\nnajbogatszych banków miasta. Ruszacie w jego kierunku.");
 
             minigame.Running(80, 10000);
 
-            Console.WriteLine("KONIEC ROZDZIAŁU II\n\n<Wciśnij Escape, aby wrócić do menu>");
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            say.dialog("n", 0, "Wkraczacie przez ogromne patio do jeszcze większej\ngłównej sali banku.");
+            say.dialog("Grey", 1, "WSZYSCY NA GLEBE, KURWA!");
+            say.dialog("n", 0, "Krzyknął jeden z twoich towarzyszy i zaraz\npo tym wystrzelił serie w sufit.\nMasa tynku runęła na ziemię.");
+            say.dialog("Eva", 1, "Tu jest ze sto osób! Co z nimi robimy?\nTrzymamy na zakładników, czy może urządzimy małą rzeź?");
+           
+
+
+                       Console.WriteLine("KONIEC ROZDZIAŁU II\n\n<Wciśnij Escape, aby wrócić do menu>");
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             Console.Clear();
             menu.wybor_kampanii();
         }
@@ -222,7 +231,7 @@ namespace THE_GAME
 
 
             Console.WriteLine("KONIEC ROZDZIAŁU III\n\n<Wciśnij Escape, aby wrócić do menu>");
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             Console.Clear();
             menu.wybor_kampanii();
         }
@@ -527,12 +536,12 @@ namespace THE_GAME
             if (Liczba_Wcisniec < Potrzebne_Wcisniecia)
             {
                 Console.WriteLine("- PRZEGRAŁEŚ\n\n<Wciśnij Escape, aby opuścić minigrę>");
-                while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+                while (Console.ReadKey(true).Key != ConsoleKey.Escape);
                 Console.Clear();
                 menu.menu_glowne();
             }
             else Console.WriteLine("- WYGRAŁEŚ\n\n<Wciśnij Escape, aby opuścić minigrę>");
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             Console.Clear();
         }
 
