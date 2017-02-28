@@ -53,5 +53,5 @@ namespace THE_GAME
                 while ((b < 1) || (b > x.Length));
                 return b;
             }
-     }
+      }
 }
