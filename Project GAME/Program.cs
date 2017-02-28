@@ -199,14 +199,14 @@ namespace THE_GAME
             {
                 say.dialog(player, 1, "Kim wy jesteście? Dlaczego się tak dziwnie zachowujecie?");
                 say.dialog("Eva", 1, "Jesteśmy ludźmi, którzy zrozumieli, że jesteśmy czymś więcej\njak pragnącą się rozmnażać tkanką. Śmierć jest niczym.\nGardzimy nią, bo wiemy, że po niej staniemy się\nczymś więcej.");
-                say.dialog("Eva", 1, "Ten świat jest obrzydliwy. Bezcelowy. Nudny.\nNie masensu żyć według zasad, to do niczego nie prowadzi.\nNaszą odpowiedzialnością jest obudzenie w sobie Bogów.\nJesteśmy wolni. Robimy co chcemy. A potem umieramy.");
+                say.dialog("Eva", 1, "Ten świat jest obrzydliwy. Bezcelowy. Nudny.\nNie ma sensu żyć według zasad, to do niczego nie prowadzi.\nNaszą odpowiedzialnością jest obudzenie w sobie Bogów.\nJesteśmy wolni. Robimy co chcemy. A potem umieramy.");
                 say.dialog("n", 0, "Wiesz, że ma rację. Czułeś to przez całe życie.\nNiezliczona ilość prób samobójczych i depresja.\nTo rzeczywiście do nikąd nie prowadzi.");
                 say.dialog("Eva", 1, "Łap gnata.");
                 say.dialog("n", 0, "Rzuca AK-47 w twoją stronę. Łapiesz je i przyglądasz\nmu się z zaciekawieniem. Jeszcze nie miałeś czegoś\ntakiego w dłoniach.");
                 say.dialog("Eva", 1, "Idziemy obrabować bank.");
             }
             Console.WriteLine("KONIEC ROZDZIAŁU I\n\n<Wciśnij Escape, aby wrócić do menu>");
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             menu.wybor_kampanii();
         }
 
@@ -217,11 +217,20 @@ namespace THE_GAME
             Console.Clear();
 
             say.dialog("n", 0, "Otacza was policja. Oczy łzawią od świateł.\nKtoś rzuca w stronę radiowozów parę granatów.\nEksplozja cię ogłusza, wyjmujesz broń i strzelasz.");
+            say.dialog("Eva", 1, "Cholera! Ale jazda!");
+            say.dialog("n", 0, "Nagle strzały ucichły. To chyba wszystko.\nPrzed wami stoi ogromny budynek jednego z\nnajbogatszych banków miasta. Ruszacie w jego kierunku.");
 
             minigame.Running(80, 10000);
 
-            Console.WriteLine("KONIEC ROZDZIAŁU II\n\n<Wciśnij Escape, aby wrócić do menu>");
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            say.dialog("n", 0, "Wkraczacie przez ogromne patio do jeszcze większej\ngłównej sali banku.");
+            say.dialog("Grey", 1, "WSZYSCY NA GLEBE, KURWA!");
+            say.dialog("n", 0, "Krzyknął jeden z twoich towarzyszy i zaraz\npo tym wystrzelił serie w sufit.\nMasa tynku runęła na ziemię.");
+            say.dialog("Eva", 1, "Tu jest ze sto osób! Co z nimi robimy?\nTrzymamy na zakładników, czy może urządzimy małą rzeź?");
+           
+
+
+                       Console.WriteLine("KONIEC ROZDZIAŁU II\n\n<Wciśnij Escape, aby wrócić do menu>");
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             Console.Clear();
             menu.wybor_kampanii();
         }
@@ -235,7 +244,7 @@ namespace THE_GAME
 
 
             Console.WriteLine("KONIEC ROZDZIAŁU III\n\n<Wciśnij Escape, aby wrócić do menu>");
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             Console.Clear();
             menu.wybor_kampanii();
         }
@@ -456,14 +465,16 @@ namespace THE_GAME
                                     Console.Write("DOBRZE! ");
                                     Console.ResetColor();
                                     Liczba_Wcisniec++;
-                                }
+                                    System.Threading.Thread.Sleep(1);
+                            }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write("ŹLE! ");
                                     Console.ResetColor();
                                     Liczba_Wcisniec--;
-                                }
+                                    System.Threading.Thread.Sleep(1);
+                            }
                                 break;
                             }
                         case 2:
@@ -474,14 +485,16 @@ namespace THE_GAME
                                     Console.Write("DOBRZE! ");
                                     Console.ResetColor();
                                     Liczba_Wcisniec++;
-                                }
+                                    System.Threading.Thread.Sleep(1);
+                            }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write("ŹLE! ");
                                     Console.ResetColor();
                                     Liczba_Wcisniec--;
-                                }
+                                    System.Threading.Thread.Sleep(1);
+                            }
                                 break;
                             }
                         case 3:
@@ -492,14 +505,16 @@ namespace THE_GAME
                                     Console.Write("DOBRZE! ");
                                     Console.ResetColor();
                                     Liczba_Wcisniec++;
-                                }
+                                    System.Threading.Thread.Sleep(1);
+                            }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write("ŹLE! ");
                                     Console.ResetColor();
                                     Liczba_Wcisniec--;
-                                }
+                                    System.Threading.Thread.Sleep(1);
+                            }
                                 break;
                             }
                         case 4:
@@ -510,14 +525,16 @@ namespace THE_GAME
                                     Console.Write("DOBRZE! ");
                                     Console.ResetColor();
                                     Liczba_Wcisniec++;
-                                }
+                                    System.Threading.Thread.Sleep(1);
+                            }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write("ŹLE! ");
                                     Console.ResetColor();
                                     Liczba_Wcisniec--;
-                                }
+                                    System.Threading.Thread.Sleep(1);
+                            }
                                 break;
                             }
                     }
@@ -532,12 +549,12 @@ namespace THE_GAME
             if (Liczba_Wcisniec < Potrzebne_Wcisniecia)
             {
                 Console.WriteLine("- PRZEGRAŁEŚ\n\n<Wciśnij Escape, aby opuścić minigrę>");
-                while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+                while (Console.ReadKey(true).Key != ConsoleKey.Escape);
                 Console.Clear();
                 menu.menu_glowne();
             }
             else Console.WriteLine("- WYGRAŁEŚ\n\n<Wciśnij Escape, aby opuścić minigrę>");
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) Console.ReadKey(true);
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             Console.Clear();
         }
 
