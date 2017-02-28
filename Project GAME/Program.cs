@@ -62,15 +62,17 @@ namespace THE_GAME
 
         }
 
-        // TODO: Fabuła The_Mysterious_AREA - prowadzący - Gambler
+        // TODO: Fabuła The_Mysterious_AREA - prowadzący - Gambleer
 
         public static void The_Mysterious_Area()
         {
             var Music = new System.Media.SoundPlayer();
             //Music.SoundLocation = @"data/audio/144950046.wav";
             Music.PlayLooping();
-
+            System.Threading.Thread.Sleep(1000);
+            int level = menu.poziom_trudnosci();
             System.Threading.Thread.Sleep(2000);
+            
 
             say.dialog("n", 0, "<Wchodzisz do świątyni. Światło sklepienia pada Ci na twarz.\nCzerwone słońce zachodzi. Nadchodzi noc.>");
 
@@ -86,16 +88,27 @@ namespace THE_GAME
             say.dialog("Starzec", 2, "Demony zaatakowały naszą wioskę. Mordują i plądrują.\nNie mamy czasu do stracenia.");
 
             say.dialog("n", 0, "<Mówi prawdę. Na zewnątrz słychać krzyki i zew wojny.>");
-
+            
             say.dialog("Starzec", 2, "Chodź. Zaprowadzę Cię do krypty. Tam wypełnisz swe przeznaczenie.");
-
+            
             Console.Clear();
             Music.Stop(); 
-
+            
             say.dialog("n", 0, "Schodzicie w dół mrocznych katakumb. W nieznane.");
 
             Console.ForegroundColor = ConsoleColor.Red;
-            minigame.Maze(1);
+            Console.WriteLine("Wpdałeś do labiryntu!");
+            Console.WriteLine();
+            Console.ReadKey();
+            
+
+            System.Threading.Thread.Sleep(500);
+            
+            Console.WriteLine("Wybrany poziom : {0}", menu.poziom(level));
+            System.Threading.Thread.Sleep(300);
+            Console.WriteLine();
+
+            minigame.Maze(level);
 
             Console.ReadKey(true);
 
@@ -528,20 +541,36 @@ namespace THE_GAME
             Console.Clear();
         }
 
-        //TODO: minigame TEXTS - prowadzący - GAMBLEER
+        //TODO: minigame TEXTS - prowadzący - Gambleer
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        //static int sprawdz_strzalke(int sprawdz)
+        static int przechwycony_wynik = 0;
 
-        static int testuj_strzalki(int time)
+        static double mnoznik(int level)
         {
+            double value = 0;
+            if (level == 1) value = 1.2;
+            if (level == 2) value = 1.5;
+            if (level == 3) value = 1.7;
+
+            return value;
+        }
+
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        static int testuj_strzalki()
+        {
+            
             Stopwatch zegar = new Stopwatch();
 
             zegar.Start();
 
                 int test2 = 0, temp1 = 1, temp2 = 1, temp3 = 1, temp4 = 1;
+            
+                int i = 0;
 
-
-                        int i = 0;
                  do
 
                     {
@@ -592,16 +621,17 @@ namespace THE_GAME
 
                 i++;
 
-                } while (temp1 == 1 && temp2 == 1 && temp3 == 1 && temp4 == 1 && zegar.ElapsedMilliseconds <= time);
+                } while (temp1 == 1 && temp2 == 1 && temp3 == 1 && temp4 == 1 && zegar.ElapsedMilliseconds <= 30000);
 
-            return i;
+            
+            return i-1;
         }
-
-        static int start_gry(int timeout, int level)
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        static int start_gry(int level)
 
         {
                 int zwracana = 0;
-                int time = timeout * 1000 * (1/level);
+                
 
             for (int i = 3; i > 0; i--)
             {
@@ -610,38 +640,46 @@ namespace THE_GAME
                 Console.ReadKey();
 
 
-                int wynik = testuj_strzalki(time);
+                int wynik = testuj_strzalki();
+                if (wynik >= 30 * mnoznik(level)) przechwycony_wynik = wynik;
 
-
-                Console.WriteLine();
+                    Console.WriteLine();
                 
 
                 Console.WriteLine("Twój wynik to: {0}", wynik); // Pobierz wartość czy błędnie kliknięto czy jest timeout, warotś za duża o 1
 
-                if (wynik >= timeout) { Console.WriteLine("Udało Ci się przejść ten poziom!"); i = 0; zwracana = 1; }
-                else { Console.WriteLine("Przegrałeś! Aby przejść ten poziom potrzebujesz minimum {0}!", timeout); zwracana = 0; }
+                if (wynik >= 30 * mnoznik(level)) { Console.WriteLine("Udało Ci się przejść ten poziom!"); i = 0; zwracana = 1; }
+                else { Console.WriteLine("Przegrałeś! Aby przejść ten poziom potrzebujesz minimum {0}!", 30 * mnoznik(level)); zwracana = 0; }
 
                     Console.WriteLine();
 
-                    if (i > 1)
+                    if (i > 2)
                     {
                         Console.WriteLine("Pozostały Ci {0} życia", i - 1);
                         Console.WriteLine();
                         Console.WriteLine("Spóbuj jeszcze raz!");
                     }
-                }
+                    if (i == 2)
+
+                    {
+                    Console.WriteLine("Pozostało Ci {0} życie", i - 1);
+                    Console.WriteLine();
+                    Console.WriteLine("Spóbuj jeszcze raz!");
+                    }
+            }
             return zwracana;
         }
 
-
-    public static void Maze(int level)
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        public static void Maze(int level)
         {
             
 
-            Console.WriteLine("Wpdałeś do labiryntu!");
+            
+            Console.WriteLine("Na każdym rozwidleniu dróg musisz kliknąć odpowiednią strzałkę, jeśli sie pomylisz - prezgrasz!");
             Console.WriteLine();
             Console.ReadKey();
-            Console.WriteLine("Na każdym rozwidleniu dróg musisz kliknąć odpowiednią strzałkę, jeśli sie pomylisz - prezgrasz!");
+            Console.WriteLine("Masz 30s na pokonanie labiryntu, a minimalny wynik jaki musisz osiągnąć to: {0}", 30 * mnoznik(level));
             Console.WriteLine();
             Console.ReadKey();
             Console.WriteLine("Masz 3 życia");
@@ -650,17 +688,38 @@ namespace THE_GAME
             Console.WriteLine("Kliknij klawisz aby zacząć!");
             
 
-            int kontynuacja = start_gry(30, level);
+            double kontynuacja = start_gry(level);
 
-            if (kontynuacja == 1) Console.WriteLine("Grasz dalej! :) ");
-            else Console.WriteLine("Żegnaj! :( Spróbuj łatwiejszego poziomu! ");
+            if (kontynuacja != 1)
+            { Console.WriteLine("Żegnaj! :( Spróbuj łatwiejszego poziomu! ");
+              Console.WriteLine();
+              Console.WriteLine("<Wciśnij Escape, aby wrócić do menu>");
+              while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+                Console.Clear();
+                Console.ResetColor();
+                menu.menu_glowne();
+            }
+            else
+            Console.WriteLine("Gratulacje! Grasz dalej! :) ");
+            Console.WriteLine();
+            Console.WriteLine("Twoje osiągnięcie: {0} pkt na poziomie trudności: {1} , zostanie zapisaane na Tablicy Wyników!", przechwycony_wynik, menu.poziom(level));
 
-            tablica_wynikow.wpisz_wynik(1, 11);
+            // przechwycony_wynik
+            // level
+            // i imię 
+
+            tablica_wynikow.wpisz_wynik(1, 11); // do ogarnięcia
 
             Console.ReadKey(true);
 
         }
     }
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     public class say
     {
@@ -714,6 +773,20 @@ namespace THE_GAME
 
     public class menu
     {
+        public static string poziom (int level)
+            
+            {
+
+                string poziom = "";
+                switch (level)
+                {
+                case 1: { poziom = "Easy"; break; }
+                case 2: { poziom = "Normal"; break; }
+                case 3: { poziom = "Hardcore"; break; }
+
+                }
+            return poziom;
+        }
         public static void intro()
         {
             char[] intro1 = new char[] { 'P', 'l', 'e', 'm', 'i', 'ę' };
@@ -770,7 +843,7 @@ namespace THE_GAME
                 System.Threading.Thread.Sleep(70);
             }
             Console.Write(" "); System.Threading.Thread.Sleep(300);
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("{0}", name_string); Console.ResetColor(); Console.Write("!");
 
             System.Threading.Thread.Sleep(1000);
@@ -814,7 +887,7 @@ namespace THE_GAME
                             Console.WriteLine("Autorzy:");
                             Console.WriteLine();
                             Console.WriteLine("Michał 'ImQ' Kropkowski");
-                            Console.WriteLine("Rafał 'Gambler' Kostun");
+                            Console.WriteLine("Rafał 'Gambleer' Kostun");
                             Console.WriteLine("Maciej Smyk");
                             System.Threading.Thread.Sleep(1000);
                             Console.WriteLine();
@@ -829,6 +902,52 @@ namespace THE_GAME
             }
             while (wybor_podmenu != 1);
         }
+
+        public static int poziom_trudnosci() 
+        {
+            int level = 0;
+            Console.Clear();
+
+            do
+            {
+
+            Console.WriteLine("Wybierz poziom trudności:");
+
+            Console.WriteLine();
+
+                Console.Write("1. ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("Easy");
+                Console.ResetColor();
+
+                Console.WriteLine();
+
+                Console.Write("2. ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Normal");
+                Console.ResetColor();
+
+                Console.WriteLine();
+
+                Console.Write("3. ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Hardcore");
+                Console.ResetColor();
+                
+                Console.WriteLine();
+
+            Console.Write("Wybierz poziom: ");
+                
+            bool b = int.TryParse(Console.ReadLine(), out level);
+            Console.Clear();
+                
+            }   while (level != 1 && level != 2 && level != 3);
+
+            Console.Clear();
+            return level;
+        }
+
+
         public static int wybor_kampanii()
         {
             int kampania,rozdzial;
@@ -893,8 +1012,8 @@ namespace THE_GAME
         static void Main(string[] args)
         {
             Console.Title = "Project_GAME";
-            //menu.intro();
-            //player = menu.name();
+            menu.intro();
+            player = menu.name();
             menu.menu_glowne();
         }
 
