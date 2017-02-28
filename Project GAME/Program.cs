@@ -213,6 +213,7 @@ namespace THE_GAME
             say.dialog("Grey", 1, "WSZYSCY NA GLEBE, KURWA!");
             say.dialog("n", 0, "Krzyknął jeden z twoich towarzyszy i zaraz\npo tym wystrzelił serie w sufit.\nMasa tynku runęła na ziemię.");
             say.dialog("Eva", 1, "Tu jest ze sto osób! Co z nimi robimy?\nTrzymamy na zakładników, czy może urządzimy małą rzeź?");
+
            
 
 
