@@ -10,7 +10,6 @@ namespace THE_GAME
 
     public class tablica_wynikow
     {
-
         public static int odczytaj_wartosc(int numer_save)
         {
             string nazwaPliku = @"save\minigame1.txt";
@@ -81,7 +80,6 @@ namespace THE_GAME
                     plik3.Close();
                 }
             }
-
         }
     }
 }
