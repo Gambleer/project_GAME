@@ -96,14 +96,15 @@ namespace THE_GAME
             do
             {
                 Console.WriteLine("|MENU GLOWNE| Project_GAME v.1.0.0 | All rights reserved.");
-                Console.Write("Gracz: ", Program.player);
+                Console.Write("Gracz: ");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine(Program.player);
                 Console.ResetColor();
                 Console.WriteLine();
                 Console.WriteLine("1. Kampania");
                 Console.WriteLine("2. Autorzy");
-                Console.WriteLine("3. Wyjście");
+                Console.WriteLine("3. Rekordy punktowe");
+                Console.WriteLine("4. Wyjście");
                 Console.WriteLine();
                 Console.Write("Wybierz podmenu: ");
                 bool b = int.TryParse(Console.ReadLine(), out wybor_podmenu);
@@ -123,18 +124,83 @@ namespace THE_GAME
                             Console.WriteLine("Michał 'ImQ' Kropkowski");
                             Console.WriteLine("Rafał 'Gambleer' Kostun");
                             Console.WriteLine("Maciej Smyk");
+                            Console.WriteLine();
                             System.Threading.Thread.Sleep(1000);
                             Console.WriteLine();
                             Console.Write("Nacisnij dowolny klawisz, aby kontynuować.");
                             Console.ReadKey(true);
                             break;
                         }
-                    case 3: Environment.Exit(0); break;
+
+                    case 3:
+                        {
+                            int kampania = 0;
+                            do
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Wybierz grę:\n");
+                                Console.WriteLine("1. The Heist");
+                                Console.WriteLine("2. We, Gods");
+                                Console.WriteLine("3. The Mysterious Area");
+                                Console.WriteLine();
+                                Console.WriteLine("4. Cofnij");
+                                Console.WriteLine();
+                                Console.Write("Wybierz: ");
+                                bool bo = int.TryParse(Console.ReadLine(), out kampania);
+                                Console.Clear();
+                            }
+                            while ((kampania != 1) && (kampania != 2) && (kampania != 3) && (kampania != 4));
+                            Console.Clear();
+
+                            if (kampania == 1) wyswietl_rekord(1);
+                            else if (kampania == 2) wyswietl_rekord(2);
+                            else if (kampania == 3) wyswietl_rekord(3);
+                            else if (kampania == 4) menu_glowne();
+                            
+                        } break;
+                    case 4: Environment.Exit(0); break;
                     default: break;
                 }
                 Console.Clear();
             }
             while (wybor_podmenu != 1);
+        }
+        public static void wyswietl_rekord(int minigra)
+        {
+            Console.Clear();
+            int level = 0;
+            do
+            {
+
+                Console.WriteLine("Wybierz poziom trudność:\n");
+
+                Console.Write("1. ");
+                Console.Write("Easy\n");
+                Console.Write("2. ");
+                Console.Write("Normal\n");
+                Console.Write("3. ");
+                Console.WriteLine("Hardcore\n");
+
+                Console.Write("Wybierz poziom: ");
+
+                bool b = int.TryParse(Console.ReadLine(), out level);
+                Console.Clear();
+
+            } while (level != 1 && level != 2 && level != 3);
+            do
+            {
+            Console.Clear();
+
+            switch (level)
+            {
+                case 1: Console.WriteLine("Najlepszy wynik osiągnięty w tej grze to: {0} pkt. Dokonał tego {1}.\nGratulacje!", tablica_wynikow.odczytaj_wartosc(minigra, 1), tablica_wynikow.odczytaj_imie(minigra, 1)); break;
+                case 2: Console.WriteLine("Najlepszy wynik osiągnięty w tej grze to: {0} pkt. Dokonał tego {1}.\nGratulacje!", tablica_wynikow.odczytaj_wartosc(minigra, 2), tablica_wynikow.odczytaj_imie(minigra, 2)); break;
+                case 3: Console.WriteLine("Najlepszy wynik osiągnięty w tej grze to: {0} pkt. Dokonał tego {1}.\nGratulacje!", tablica_wynikow.odczytaj_wartosc(minigra, 3), tablica_wynikow.odczytaj_imie(minigra, 3)); break;
+            }
+            Console.WriteLine("\n\n<Wciśnij Escape, aby wrócić do menu>");
+            }
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+            
         }
 
         public static int poziom_trudnosci()

@@ -235,7 +235,7 @@ namespace THE_GAME
             double value = 0;
             if (level == 1) value = 1.2;
             if (level == 2) value = 1.5;
-            if (level == 3) value = 2;
+            if (level == 3) value = 1.8;
 
             return value;
         }
@@ -324,12 +324,15 @@ namespace THE_GAME
 
                 Console.WriteLine();
 
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                
+                Console.WriteLine("Twój wynik to: {0}", wynik);
+                Console.WriteLine();
 
-                Console.WriteLine("Twój wynik to: {0}", wynik); // Pobierz wartość czy błędnie kliknięto czy jest timeout, warotś za duża o 1
+                if (wynik >= 30 * mnoznik(level)) { Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Udało Ci się przejść ten poziom!"); i = 0; zwracana = 1; }
 
-                if (wynik >= 30 * mnoznik(level)) { Console.WriteLine("Udało Ci się przejść ten poziom!"); i = 0; zwracana = 1; }
-                else { Console.WriteLine("Przegrałeś! Aby przejść ten poziom potrzebujesz minimum {0}!", 30 * mnoznik(level)); zwracana = 0; }
-
+                else { Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Przegrałeś! Aby przejść ten poziom potrzebujesz minimum {0}!", 30 * mnoznik(level)); zwracana = 0; }
+                
                 Console.WriteLine();
 
                 if (i > 2)
@@ -367,24 +370,36 @@ namespace THE_GAME
 
             if (kontynuacja != 1)
             {
-                Console.WriteLine("Żegnaj! :( Spróbuj łatwiejszego poziomu! ");
+                Console.WriteLine("Żegnaj! :( ");
+                if (level > 1) Console.Write("Spróbuj łatwiejszego poziomu! ");
                 Console.WriteLine();
                 Console.WriteLine("<Wciśnij Escape, aby wrócić do menu>");
                 while (Console.ReadKey(true).Key != ConsoleKey.Escape) ;
                 Console.Clear();
                 Console.ResetColor();
+                var Melody = new System.Media.SoundPlayer();
+                Melody.SoundLocation = @"data/audio/Forever.wav";
+                Melody.PlayLooping();
                 menu.menu_glowne();
+
             }
             else
+            Console.ResetColor();
             Console.WriteLine("Gratulacje! Grasz dalej! :) ");
+            Console.ReadKey(true);
+            Console.Clear();
+            Console.ResetColor();
+            if (przechwycony_wynik > tablica_wynikow.odczytaj_wartosc(3, level))
+
+                {
+                    Console.WriteLine("Pobiłeś rekord! Twoje osiągnięcie {0} pkt na poziomie trudności: {1} ,\nzostanie zapisaane na Tablicy Rekordów!", przechwycony_wynik, menu.poziom(level));
+                    tablica_wynikow.wpisz_wynik(3, level, Program.player, przechwycony_wynik);
+                }
+            else Console.WriteLine("Nie udało Ci się pobić rekordu. Obecny rekord możesz sprawdzić w menu.");
+
             Console.WriteLine();
-            Console.WriteLine("Twoje osiągnięcie: {0} pkt na poziomie trudności: {1} , zostanie zapisaane na Tablicy Wyników!", przechwycony_wynik, menu.poziom(level));
+            Console.WriteLine("Lecim na Szczecin");
 
-            // przechwycony_wynik
-            // level
-            // i imię 
-
-            tablica_wynikow.wpisz_wynik(1, 11); // do ogarnięcia
 
             Console.ReadKey(true);
         }

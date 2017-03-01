@@ -14,7 +14,7 @@ namespace THE_GAME
         {
             var Music = new System.Media.SoundPlayer();
             Music.SoundLocation = @"data/audio/Heist.wav";
-            Music.Play();
+            //Music.Play();
 
             System.Threading.Thread.Sleep(2000);
 
