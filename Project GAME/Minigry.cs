@@ -393,24 +393,28 @@ namespace THE_GAME
 
             }
             else
-            Console.ResetColor();
-            Console.WriteLine("Gratulacje! Grasz dalej! :) ");
-            Console.ReadKey(true);
-            Console.Clear();
-            Console.ResetColor();
-            if (przechwycony_wynik > tablica_wynikow.odczytaj_wartosc(3, level))
+            {
+                Console.ResetColor();
+                Console.WriteLine("Gratulacje! Grasz dalej! :) ");
+                Console.ReadKey(true);
+                Console.Clear();
+                Console.ResetColor();
+
+                if (przechwycony_wynik > tablica_wynikow.odczytaj_wartosc(3, level))
 
                 {
                     Console.WriteLine("Pobiłeś rekord! Twoje osiągnięcie {0} pkt na poziomie trudności: {1} ,\nzostanie zapisaane na Tablicy Rekordów!", przechwycony_wynik, menu.poziom(level));
                     tablica_wynikow.wpisz_wynik(3, level, Program.player, przechwycony_wynik);
                 }
-            else Console.WriteLine("Nie udało Ci się pobić rekordu. Obecny rekord możesz sprawdzić w menu.");
+                else Console.WriteLine("Nie udało Ci się pobić rekordu. Obecny rekord możesz sprawdzić w menu.");
 
-            Console.WriteLine();
-            Console.WriteLine("Lecim na Szczecin");
+                Console.WriteLine();
+
+                Console.WriteLine("Lecim na Szczecin"); //
 
 
-            Console.ReadKey(true);
+                Console.ReadKey(true);
+            }
         }
     }
 }
