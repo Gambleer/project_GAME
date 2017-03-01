@@ -90,7 +90,7 @@ namespace THE_GAME
 
         public static void Running(int Potrzebne_Wcisniecia, int Czas)
         {
-            Potrzebne_Wcisniecia *= mnoznik2;
+            //Potrzebne_Wcisniecia *= mnoznik2;
             Console.Clear();
             Console.WriteLine("PRZYGOTUJ SIĘ...");
             System.Threading.Thread.Sleep(1000);

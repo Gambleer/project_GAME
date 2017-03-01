@@ -16,8 +16,8 @@ namespace THE_GAME
         static void Main(string[] args)
         {
             Console.Title = "Project_GAME";
-            //menu.intro();
-            //player = menu.name();
+            menu.intro();
+            player = menu.name();
             menu.menu_glowne();
         }
     }
