@@ -110,6 +110,8 @@ namespace THE_GAME
 
         public static void Chaos()
                 {
+                menu.poziom_trudnosci();
+
                 Console.Write("ROZDZIAŁ I: CHAOS");
                 System.Threading.Thread.Sleep(2000);
                 Console.Clear();
@@ -204,6 +206,8 @@ namespace THE_GAME
 
         public static void My_Bogowie()
                 {
+                menu.poziom_trudnosci();
+
                 Console.Write("ROZDZIAŁ II: MY, BOGOWIE");
                 System.Threading.Thread.Sleep(2000);
                 Console.Clear();
@@ -230,6 +234,8 @@ namespace THE_GAME
 
         public static void Smierc()
                 {
+                menu.poziom_trudnosci();
+
                 Console.Write("ROZDZIAŁ III: ŚMIERC.");
                 System.Threading.Thread.Sleep(2000);
                 Console.Clear();
