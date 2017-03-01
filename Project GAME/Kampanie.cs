@@ -107,11 +107,10 @@ namespace THE_GAME
     class Gods
     {
         static string player = Program.player;
+        public static double mnoznik = minigame.mnoznik2(menu.poziom_trudnosci());
 
         public static void Chaos()
                 {
-                menu.poziom_trudnosci();
-
                 Console.Write("ROZDZIAŁ I: CHAOS");
                 System.Threading.Thread.Sleep(2000);
                 Console.Clear();

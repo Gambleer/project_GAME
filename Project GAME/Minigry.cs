@@ -88,9 +88,9 @@ namespace THE_GAME
             menu.menu_glowne();
         }
 
-        public static void Running(int Potrzebne_Wcisniecia, int Czas)
+        public static void Running(double Potrzebne_Wcisniecia, int Czas)
         {
-            //Potrzebne_Wcisniecia *= mnoznik2;
+            Potrzebne_Wcisniecia *= Gods.mnoznik;
             Console.Clear();
             Console.WriteLine("PRZYGOTUJ SIĘ...");
             System.Threading.Thread.Sleep(1000);
@@ -128,7 +128,6 @@ namespace THE_GAME
                                 Console.Write("DOBRZE! ");
                                 Console.ResetColor();
                                 Liczba_Wcisniec++;
-                                System.Threading.Thread.Sleep(1);
                             }
                             else
                             {
@@ -136,7 +135,6 @@ namespace THE_GAME
                                 Console.Write("ŹLE! ");
                                 Console.ResetColor();
                                 Liczba_Wcisniec--;
-                                System.Threading.Thread.Sleep(1);
                             }
                             break;
                         }
@@ -148,7 +146,6 @@ namespace THE_GAME
                                 Console.Write("DOBRZE! ");
                                 Console.ResetColor();
                                 Liczba_Wcisniec++;
-                                System.Threading.Thread.Sleep(1);
                             }
                             else
                             {
@@ -156,7 +153,6 @@ namespace THE_GAME
                                 Console.Write("ŹLE! ");
                                 Console.ResetColor();
                                 Liczba_Wcisniec--;
-                                System.Threading.Thread.Sleep(1);
                             }
                             break;
                         }
@@ -168,7 +164,6 @@ namespace THE_GAME
                                 Console.Write("DOBRZE! ");
                                 Console.ResetColor();
                                 Liczba_Wcisniec++;
-                                System.Threading.Thread.Sleep(1);
                             }
                             else
                             {
@@ -176,7 +171,6 @@ namespace THE_GAME
                                 Console.Write("ŹLE! ");
                                 Console.ResetColor();
                                 Liczba_Wcisniec--;
-                                System.Threading.Thread.Sleep(1);
                             }
                             break;
                         }
@@ -188,7 +182,6 @@ namespace THE_GAME
                                 Console.Write("DOBRZE! ");
                                 Console.ResetColor();
                                 Liczba_Wcisniec++;
-                                System.Threading.Thread.Sleep(1);
                             }
                             else
                             {
@@ -196,7 +189,6 @@ namespace THE_GAME
                                 Console.Write("ŹLE! ");
                                 Console.ResetColor();
                                 Liczba_Wcisniec--;
-                                System.Threading.Thread.Sleep(1);
                             }
                             break;
                         }
@@ -240,12 +232,12 @@ namespace THE_GAME
             return value;
         }
 
-        static double mnoznik2()
+        public static double mnoznik2(int trudnosc)
         {
             double value = 0;
-            if (menu.poziom_trudnosci() == 1) value = 0.8;
-            if (menu.poziom_trudnosci() == 2) value = 1;
-            if (menu.poziom_trudnosci() == 3) value = 1.2;
+            if (trudnosc == 1) value = 0.8;
+            if (trudnosc == 2) value = 1;
+            if (trudnosc == 3) value = 1.2;
 
             return value;
         }
