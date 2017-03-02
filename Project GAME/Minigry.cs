@@ -326,6 +326,7 @@ namespace THE_GAME
 
                 Console.WriteLine();
                 Console.ReadKey();
+                Console.WriteLine();
 
 
                 int wynik = testuj_strzalki();
