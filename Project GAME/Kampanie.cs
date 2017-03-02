@@ -374,6 +374,34 @@ namespace THE_GAME
             say.dialog("n", 0, "Zrzucasz z siebie jak szmatę leżąca na sobie dziwkę. Z jej\npiersi wciągasz resztę kraku.");
             say.dialog("Eva", 1, "Ja cię stoczyłam? Dzięki mnie masz to... wszystko.");
             say.dialog("Eva", 1, "Ahh.. ty pierdolony beju. Ekipa antyterrorystyczna\nma nasz ślad. Za chwilę tu będą. Przygotuj się.");
+            say.dialog("n", 0, "Łapiesz za ciuchy, ubierasz się i wychodzisz z Evą na zewnątrz.\nWokół twojej bogatej willi krążą dwa helikoptery\nwypełnione antyterrorystami. Łapiesz za broń.");
+
+            minigame.Running(80, 12000);
+
+            say.dialog("n", 0, "Pierwszy helikopter płonie i rozbija się o twój prywatny\basen. Z drugiego na linach wyskakują zbrojni.");
+
+            minigame.Running(90, 12000);
+
+            say.dialog("n", 0, "Zabijasz wszystkich. Eva wyjmuje bazookę i strzela w drugi\nhelikopter. Ten rozbija się w szczątkach gdzieś w oddali.");
+            say.dialog("Eva", 1, "Dwa lata żyliśmy jak królowie. Teraz czas to oddać. Oni nam\nnie odpuszczą. Będą nas ścigać i nigdy nie przestaną.");
+            say.dialog("Eva", 1, "Naszą jedyną opcją jest zrobić coś szalonego, że odejdziemy\nz tego świata z klasą. Zostaniemy zapamiętani. Co powinniśmy zrobić?");
+
+            string[] z = new string[] { "Obalmy partię rządzącą", "Zniszczmy ISIS" };
+            int wybor = say.wybor(z);
+
+            if (wybor == 1)
+            {
+                say.dialog(player, 1, "Obalmy partię rządzącą naszym państwem. Wystarczająco\nludzie się przez nich nacierpieli. Korupcja, kłamstwa, brak zmian,\ngloryfikacja korporacji, podatkowanie i niszczenie żyć\nzwykłych porządnych obywateli. Czas to zakończyć.");
+                say.dialog("Eva", 1, "Zgadzam się. Powinniśmy się tym zająć, wtedy odzyskamy dobre imię.\nI pamięć.");
+
+            }
+
+            if (wybor == 2)
+            {
+                say.dialog(player, 1, "ISIS wystarczająco długo trawiło ludzkość.\nZbyt długo siali strach wśród ludzi. Zbyt wielu\nzginęło. Musimy to zakończyć.");
+                say.dialog("Eva", 1, "Zgadzam się. Powinniśmy się tym zająć, wtedy odzyskamy dobre imię.\nI pamięć.");
+
+            }
 
             Console.WriteLine("KONIEC ROZDZIAŁU III\n\n<Wciśnij Escape, aby wrócić do menu>");
             while (Console.ReadKey(true).Key != ConsoleKey.Escape) ;
