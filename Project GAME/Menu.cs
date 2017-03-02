@@ -13,9 +13,9 @@ namespace THE_GAME
             string poziom = "";
             switch (level)
             {
-                case 1: { poziom = "Easy"; break; }
-                case 2: { poziom = "Normal"; break; }
-                case 3: { poziom = "Hardcore"; break; }
+                case 1: { poziom = "Łatwy"; break; }
+                case 2: { poziom = "Normalny"; break; }
+                case 3: { poziom = "Hardkorowy"; break; }
             }
 
             return poziom;
@@ -102,8 +102,8 @@ namespace THE_GAME
                 Console.ResetColor();
                 Console.WriteLine();
                 Console.WriteLine("1. Kampania");
-                Console.WriteLine("2. Autorzy");
-                Console.WriteLine("3. Rekordy punktowe");
+                Console.WriteLine("2. Rekordy punktowe");
+                Console.WriteLine("3. Autorzy");
                 Console.WriteLine("4. Wyjście");
                 Console.WriteLine();
                 Console.Write("Wybierz podmenu: ");
@@ -116,23 +116,8 @@ namespace THE_GAME
                             wybor_kampanii();
                             break;
                         }
+                    
                     case 2:
-                        {
-                            Console.Clear();
-                            Console.WriteLine("Autorzy:");
-                            Console.WriteLine();
-                            Console.WriteLine("Michał 'ImQ' Kropkowski");
-                            Console.WriteLine("Rafał 'Gambleer' Kostun");
-                            Console.WriteLine("Maciej Smyk");
-                            Console.WriteLine();
-                            System.Threading.Thread.Sleep(1000);
-                            Console.WriteLine();
-                            Console.Write("Nacisnij dowolny klawisz, aby kontynuować.");
-                            Console.ReadKey(true);
-                            break;
-                        }
-
-                    case 3:
                         {
                             int kampania = 0;
                             do
@@ -158,6 +143,23 @@ namespace THE_GAME
                             else if (kampania == 4) menu_glowne();
                             
                         } break;
+
+                    case 3:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Autorzy:");
+                            Console.WriteLine();
+                            Console.WriteLine("Michał 'ImQ' Kropkowski");
+                            Console.WriteLine("Rafał 'Gambleer' Kostun");
+                            Console.WriteLine("Maciej Smyk");
+                            Console.WriteLine();
+                            System.Threading.Thread.Sleep(1000);
+                            Console.WriteLine();
+                            Console.Write("Nacisnij dowolny klawisz, aby kontynuować.");
+                            Console.ReadKey(true);
+                            break;
+                        }
+
                     case 4: Environment.Exit(0); break;
                     default: break;
                 }
